@@ -8,10 +8,15 @@ const j2 = new Joint(2, 3, 4)
 const joints = [j1, j2]
 
 const thumb = new Finger()
-const indexFinger = new Finger()
-const fingers = [thumb, indexFinger]
+const index = new Finger()
+const middle = new Finger()
+const ring = new Finger()
+const little = new Finger()
 
-const robot = new Robot(joints, new RobotHand(fingers))
+const robot = new Robot(
+  joints,
+  new RobotHand(thumb, index, middle, ring, little)
+)
 
 // setting joint coordinate
 robot.joints[0].x = 3
