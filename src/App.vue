@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <header>
+      <h1>RoboApp</h1>
+    </header>
   </div>
 </template>
 
@@ -18,12 +19,21 @@ export default class App extends Vue {}
 </script>
 
 <style>
+* {
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+header {
+  background: linear-gradient(178deg, forestgreen, orange);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px grey;
+  font-family: "Poppins", sans-serif;
 }
 </style>
