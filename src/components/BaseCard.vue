@@ -10,17 +10,18 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class BaseCard extends Vue {
-  @Prop() title!: string
+  @Prop({ type: String, required: true }) title!: string
 }
 </script>
 
 <style scoped>
 section {
   box-shadow: 0 2px 4px grey;
-  width: 50%;
-  margin: 1rem auto;
+  width: 45%;
   padding: 1rem;
   border-radius: 0.5rem;
+  display: inline-block;
+  margin: 0.5rem 0.25rem;
 }
 h2 {
   border-bottom: 2px solid orange;

@@ -3,9 +3,14 @@
     <header>
       <h1>RoboApp</h1>
     </header>
-    <base-card title="Robot program">
-      <programming-form></programming-form>
-    </base-card>
+    <section>
+      <base-card title="Robot program">
+        <programming-form></programming-form>
+      </base-card>
+      <base-card title="Joint display">
+        <joint-display></joint-display>
+      </base-card>
+    </section>
   </div>
 </template>
 
@@ -13,11 +18,13 @@
 import { Component, Vue } from 'vue-property-decorator'
 import BaseCard from './components/BaseCard.vue'
 import ProgrammingForm from './components/ProgrammingForm.vue'
+import JointDisplay from './components/JointDisplay.vue'
 
 @Component({
   components: {
     BaseCard,
     ProgrammingForm,
+    JointDisplay,
   },
 })
 export default class App extends Vue {}
@@ -26,6 +33,7 @@ export default class App extends Vue {}
 <style>
 * {
   margin: 0;
+  padding: 0;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -41,5 +49,11 @@ header {
   box-shadow: 0 2px 4px grey;
   font-family: 'Poppins', sans-serif;
   margin-bottom: 3rem;
+}
+section {
+  vertical-align: top;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 </style>
