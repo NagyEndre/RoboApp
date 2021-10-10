@@ -28,5 +28,6 @@ button {
   background: green;
   padding: 0.25rem 1rem;
   border-radius: 0.25rem;
+  font-family: 'Fira Sans', sans-serif;
 }
 </style>
