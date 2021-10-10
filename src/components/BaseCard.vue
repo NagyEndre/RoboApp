@@ -18,8 +18,9 @@ export default class BaseCard extends Vue {
 section {
   box-shadow: 0 2px 4px grey;
   width: 50%;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 1rem;
+  border-radius: 0.5rem;
 }
 h2 {
   border-bottom: 2px solid orange;

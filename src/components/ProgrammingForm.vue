@@ -20,5 +20,13 @@ textarea {
   width: 100%;
   resize: none;
   height: 15rem;
+  border: 1px solid orange;
+  border-radius: 0.25rem;
+}
+button {
+  color: white;
+  background: green;
+  padding: 0.25rem 1rem;
+  border-radius: 0.25rem;
 }
 </style>
