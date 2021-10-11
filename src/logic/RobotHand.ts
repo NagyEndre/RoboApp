@@ -11,4 +11,16 @@ export default class RobotHand extends Tool<Finger> {
   ) {
     super([thumb, index, middle, ring, little])
   }
+
+  closeAll() {
+    this.parts.forEach((finger) => {
+      finger.close()
+    })
+  }
+
+  openAll() {
+    this.parts.forEach((finger) => {
+      finger.open()
+    })
+  }
 }
