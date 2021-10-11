@@ -1,6 +1,7 @@
 <template>
   <ul>
     <li v-for="(joint, index) in joints" :key="index">
+      Joint {{ index + 1 }}
       <span v-for="(value, key) in joint" :key="key">
         {{ key }}: {{ value }}</span
       >
@@ -22,5 +23,11 @@ export default class JointDisplay extends Vue {
 <style scoped>
 li {
   list-style: none;
+  margin: 0.25rem 0;
+}
+span {
+  border: 1px solid grey;
+  padding: 0 0.5rem;
+  background-color: wheat;
 }
 </style>
