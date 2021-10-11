@@ -48,7 +48,7 @@ header {
   padding: 1rem 0;
   box-shadow: 0 2px 4px grey;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 section {
   vertical-align: top;
