@@ -7,12 +7,14 @@
       <base-card title="Robot program">
         <programming-form></programming-form>
       </base-card>
-      <base-card title="Joint display">
-        <joint-display></joint-display>
-      </base-card>
-      <base-card title="Robot Hand display">
-        <robot-hand-display></robot-hand-display>
-      </base-card>
+      <div>
+        <base-card title="Joint display">
+          <joint-display></joint-display>
+        </base-card>
+        <base-card title="Robot Hand display">
+          <robot-hand-display></robot-hand-display>
+        </base-card>
+      </div>
     </section>
   </div>
 </template>
