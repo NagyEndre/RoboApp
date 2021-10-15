@@ -22,15 +22,30 @@ export default class Interpreter {
         break
       }
       case 'close': {
+        const fingers =
+          this.tokens[1] === 'all'
+            ? [0, 1, 2, 3, 4]
+            : [Number(this.tokens[1]) - 1]
+
+        fingers.forEach((fingerIndex) => {
+          store.commit('closeFinger', fingerIndex)
+        })
         break
       }
       case 'open': {
+        const fingers =
+          this.tokens[1] === 'all'
+            ? [0, 1, 2, 3, 4]
+            : [Number(this.tokens[1]) - 1]
+
+        fingers.forEach((fingerIndex) => {
+          store.commit('openFinger', fingerIndex)
+        })
         break
       }
       default: {
         throw new Error('Invalid command type')
       }
     }
-    // execute
   }
 }
