@@ -55,6 +55,9 @@ export default class App extends Vue {
   text-align: center;
   color: #2c3e50;
 }
+body {
+  background-color: rgba(233, 164, 14, 0.116);
+}
 section {
   vertical-align: top;
   display: flex;

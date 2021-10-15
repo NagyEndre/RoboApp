@@ -23,6 +23,7 @@ section {
   border-radius: 0.5rem;
   display: inline-block;
   margin: 0.5rem 0.25rem;
+  background: white;
 }
 h2 {
   border-bottom: 2px solid orange;
