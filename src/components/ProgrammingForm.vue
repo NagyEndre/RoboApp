@@ -1,39 +1,30 @@
 <template>
   <form action="submit" @submit.prevent="run">
     <div>
-      <textarea name="robot-program" id="" rows="10"></textarea>
+      <textarea
+        name="robot-program"
+        id=""
+        rows="10"
+        v-model="program"
+      ></textarea>
     </div>
     <button type="submit">Run</button>
   </form>
 </template>
 
 <script lang="ts">
-import store from '@/store'
 import { Vue, Component } from 'vue-property-decorator'
 import Interpreter from '../logic/Interpreter'
 
 @Component
 export default class ProgrammingForm extends Vue {
+  program = ''
   run() {
-    console.log('Interpreting and running program..')
-    // break by new lines
-    //new Interpreter('move j1 3 4 5').run()
+    const programLines = this.program.split('\n')
 
-    store.commit('setJointCoordinates', {
-      joint: 1,
-      x: 99,
-      y: 99,
-      z: 99,
+    programLines.forEach((line) => {
+      new Interpreter(line).run()
     })
-    store.commit('setJointCoordinates', {
-      joint: 3,
-      x: 69,
-      y: 69,
-      z: 69,
-    })
-
-    store.commit('setFinger', { index: 1, isOpen: false })
-    store.commit('setFinger', { index: 4, isOpen: false })
   }
 }
 </script>
