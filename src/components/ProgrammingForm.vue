@@ -8,6 +8,7 @@
 </template>
 
 <script lang="ts">
+import store from '@/store'
 import { Vue, Component } from 'vue-property-decorator'
 import Interpreter from '../logic/Interpreter'
 
@@ -15,7 +16,21 @@ import Interpreter from '../logic/Interpreter'
 export default class ProgrammingForm extends Vue {
   run() {
     console.log('Interpreting and running program..')
-    new Interpreter('').run()
+    // break by new lines
+    //new Interpreter('move j1 3 4 5').run()
+
+    store.commit('setJointCoordinates', {
+      joint: 1,
+      x: 99,
+      y: 99,
+      z: 99,
+    })
+    store.commit('setJointCoordinates', {
+      joint: 3,
+      x: 69,
+      y: 69,
+      z: 69,
+    })
   }
 }
 </script>

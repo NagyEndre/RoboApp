@@ -1,26 +1,31 @@
-import Finger from '@/model/Finger'
-import Joint from '@/model/Joint'
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getRobot } from '@/logic/RobotApp'
+import { buildRobot } from '@/logic/RobotBuilder'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    robot: getRobot(),
-    joints: [new Joint(1, 2, 3), new Joint(4, 5, 6), new Joint(7, 8, 9)],
-    tool: { parts: [new Finger()] },
+    robot: buildRobot(),
   },
   getters: {
     joints(state) {
-      return state.joints
+      return state.robot.joints
     },
     robot(state) {
       return state.robot
     },
   },
-  mutations: {},
+  mutations: {
+    setJointCoordinates(
+      state: any,
+      payload: { joint: number; x: number; y: number; z: number }
+    ): void {
+      const tmpRobot = state.robot
+      tmpRobot.joints[payload.joint - 1].set(payload.x, payload.y, payload.z)
+      state.robot = tmpRobot
+    },
+  },
   actions: {},
   modules: {},
 })
