@@ -31,6 +31,9 @@ export default class ProgrammingForm extends Vue {
       y: 69,
       z: 69,
     })
+
+    store.commit('setFinger', { index: 1, isOpen: false })
+    store.commit('setFinger', { index: 4, isOpen: false })
   }
 }
 </script>

@@ -28,6 +28,9 @@ export default new Vuex.Store({
       tmpRobot.joints[payload.joint - 1].set(payload.x, payload.y, payload.z)
       state.robot = tmpRobot
     },
+    setFinger(state, payload: { index: number; isOpen: boolean }) {
+      state.robot.tool.parts[payload.index].isOpen = payload.isOpen
+    },
   },
   actions: {},
   modules: {},
