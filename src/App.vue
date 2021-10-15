@@ -10,9 +10,6 @@
       <base-card title="Joint display">
         <joint-display></joint-display>
       </base-card>
-      <base-card title="Robot">
-        <p>{{ robot }}</p>
-      </base-card>
     </section>
   </div>
 </template>
