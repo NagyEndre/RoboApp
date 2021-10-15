@@ -10,6 +10,9 @@
       <base-card title="Joint display">
         <joint-display></joint-display>
       </base-card>
+      <base-card>
+        <p>{{ robot }}</p>
+      </base-card>
     </section>
   </div>
 </template>
@@ -27,7 +30,11 @@ import JointDisplay from './components/JointDisplay.vue'
     JointDisplay,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  get robot() {
+    return this.$store.getters.robot
+  }
+}
 </script>
 
 <style>
