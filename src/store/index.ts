@@ -15,6 +15,9 @@ export default new Vuex.Store({
     robot(state) {
       return state.robot
     },
+    fingers(state) {
+      return state.robot.tool.parts
+    },
   },
   mutations: {
     setJointCoordinates(
