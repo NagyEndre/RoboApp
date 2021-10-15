@@ -1,7 +1,6 @@
 <template>
-  <form action="submit" @submit.prevent="">
+  <form action="submit" @submit.prevent="run">
     <div>
-      <label for="robot-program">Robot program</label>
       <textarea name="robot-program" id="" rows="10"></textarea>
     </div>
     <button type="submit">Run</button>
@@ -10,9 +9,15 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import Interpreter from '../logic/Interpreter'
 
 @Component
-export default class ProgrammingForm extends Vue {}
+export default class ProgrammingForm extends Vue {
+  run() {
+    console.log('Interpreting and running program..')
+    new Interpreter('').run()
+  }
+}
 </script>
 
 <style scoped>

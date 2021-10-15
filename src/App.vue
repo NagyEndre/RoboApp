@@ -10,7 +10,7 @@
       <base-card title="Joint display">
         <joint-display></joint-display>
       </base-card>
-      <base-card>
+      <base-card title="Robot">
         <p>{{ robot }}</p>
       </base-card>
     </section>
@@ -32,6 +32,8 @@ import JointDisplay from './components/JointDisplay.vue'
 })
 export default class App extends Vue {
   get robot() {
+    const robot = this.$store.getters.robot
+    console.log(robot)
     return this.$store.getters.robot
   }
 }

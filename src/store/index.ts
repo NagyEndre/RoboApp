@@ -1,8 +1,8 @@
-import Finger from '@/logic/Finger'
-import Joint from '@/logic/Joint'
+import Finger from '@/model/Finger'
+import Joint from '@/model/Joint'
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getRobot } from '../logic/RobotApp'
+import { getRobot } from '@/logic/RobotApp'
 
 Vue.use(Vuex)
 

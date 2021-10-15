@@ -1,7 +1,7 @@
-import Joint from './Joint'
-import Robot from './Robot'
-import RobotHand from './RobotHand'
-import Finger from './Finger'
+import Joint from '../model/Joint'
+import Robot from '../model/Robot'
+import RobotHand from '../model/RobotHand'
+import Finger from '../model/Finger'
 
 export function getRobot() {
   const joints = [new Joint(1, 2, 3), new Joint(4, 5, 6), new Joint(7, 8, 9)]
