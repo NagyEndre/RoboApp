@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <header>
-      <h1>RoboApp</h1>
-    </header>
+    <the-header></the-header>
     <section>
       <base-card title="Robot program">
         <programming-form></programming-form>
@@ -11,7 +9,7 @@
         <base-card title="Joint display">
           <joint-display></joint-display>
         </base-card>
-        <base-card title="Robot Hand display">
+        <base-card title="Robot hand display">
           <robot-hand-display></robot-hand-display>
         </base-card>
       </div>
@@ -25,6 +23,7 @@ import BaseCard from './components/BaseCard.vue'
 import ProgrammingForm from './components/ProgrammingForm.vue'
 import JointDisplay from './components/JointDisplay.vue'
 import RobotHandDisplay from './components/RobotHandDisplay.vue'
+import TheHeader from './components/TheHeader.vue'
 
 @Component({
   components: {
@@ -32,6 +31,7 @@ import RobotHandDisplay from './components/RobotHandDisplay.vue'
     ProgrammingForm,
     JointDisplay,
     RobotHandDisplay,
+    TheHeader,
   },
 })
 export default class App extends Vue {
@@ -54,14 +54,6 @@ export default class App extends Vue {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-header {
-  background: linear-gradient(178deg, forestgreen, orange);
-  color: white;
-  padding: 1rem 0;
-  box-shadow: 0 2px 4px grey;
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 2rem;
 }
 section {
   vertical-align: top;
