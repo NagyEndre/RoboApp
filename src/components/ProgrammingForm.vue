@@ -4,6 +4,7 @@
       <textarea
         name="robot-program"
         id=""
+        autofocus="autofocus"
         rows="10"
         v-model="program"
       ></textarea>
@@ -36,6 +37,7 @@ textarea {
   height: 15rem;
   border: 1px solid orange;
   border-radius: 0.25rem;
+  padding: 0.2rem;
 }
 button {
   color: white;
