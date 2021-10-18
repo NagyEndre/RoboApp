@@ -6,7 +6,7 @@ describe('RoboApp test suite', () => {
   })
 
   it('When joint moved, should update corresponding coordinates', () => {
-    cy.get('textarea').type('move 3 66 77 88')
+    cy.get('textarea').type('move 3 x66 y77 z88')
     cy.get('button').click()
 
     cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
@@ -17,7 +17,7 @@ describe('RoboApp test suite', () => {
   })
 
   it('When multiple joints moved, should update coordinates', () => {
-    cy.get('textarea').type('move 3 66 77 88\nmove 4 11 22 33')
+    cy.get('textarea').type('move 3 x66 y77 z88\nmove 4 x11 y22 z33')
     cy.get('button').click()
 
     cy.get('#joint-display').then((joints) => {
