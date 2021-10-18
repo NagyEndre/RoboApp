@@ -9,9 +9,11 @@ describe('RoboApp test suite', () => {
     cy.get('textarea').type('move 3 66 77 88')
     cy.get('button').click()
 
-    cy.get('#joint-display')
-      .contains('Joint 3')
-      .should('have.text', ' Joint 3  x: 66 y: 77 z: 88')
+    cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
+      cy.wrap(joint).find(':nth-child(1)').should('have.text', ' x: 66')
+      cy.wrap(joint).find(':nth-child(2)').should('have.text', ' y: 77')
+      cy.wrap(joint).find(':nth-child(3)').should('have.text', ' z: 88')
+    })
   })
 
   it('When multiple joints moved, should update coordinates', () => {
@@ -32,10 +34,10 @@ describe('RoboApp test suite', () => {
     cy.get('textarea').type('close 4')
     cy.get('button').click()
 
-    cy.get('#tool-display')
-      .find('li')
-      .contains('Finger 4')
-      .should('have.text', ' Finger 4  Closed ')
+    cy.get('#tool-display > ul > :nth-child(4) > span').should(
+      'have.text',
+      ' Closed '
+    )
   })
 
   it('When all fingers closed, should display closed fingers', () => {

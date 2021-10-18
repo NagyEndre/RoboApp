@@ -3,7 +3,6 @@
     <div>
       <textarea
         name="robot-program"
-        id=""
         autofocus="autofocus"
         rows="10"
         v-model="program"
