@@ -19,7 +19,12 @@ export default class Interpreter {
 
         store.commit(
           MUTATIONS.SET_JOINT_COORDINATES,
-          this.createJointPayload(jointIndex, coordinates.x, coordinates.y, coordinates.z)
+          this.createJointPayload(
+            jointIndex,
+            coordinates.x,
+            coordinates.y,
+            coordinates.z
+          )
         )
         break
       }
@@ -90,9 +95,8 @@ export default class Interpreter {
   }
 
   private getFingerIndexes(): number[] {
-    return this.tokens.shift() === CommandType.All
-      ? [0, 1, 2, 3, 4]
-      : [Number(this.tokens[1]) - 1]
+    const token = this.tokens.shift()
+    return token === CommandType.All ? [0, 1, 2, 3, 4] : [Number(token) - 1]
   }
 }
 enum Axes {
