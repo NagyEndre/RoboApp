@@ -8,9 +8,6 @@ export default class Interpreter {
     this.tokens = Lexer.lex(program)
   }
   run() {
-    console.log('Running program')
-    console.log(this.tokens)
-
     const commandType = this.tokens[0]
     switch (commandType) {
       case 'move': {
