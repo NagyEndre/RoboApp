@@ -5,10 +5,11 @@ import Finger from '../model/Finger'
 
 export function buildRobot(): Robot {
   const joints = [
-    new Joint(1, 2, 3),
-    new Joint(4, 5, 6),
-    new Joint(7, 8, 9),
-    new Joint(10, 11, 12),
+    new Joint(2, 2, 2),
+    new Joint(6, 6, 6),
+    new Joint(4, 4, 4),
+    new Joint(8, 8, 8),
+    new Joint(10, 10, 10),
   ]
   const robotHand = new RobotHand(
     new Finger(),
