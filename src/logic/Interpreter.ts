@@ -1,5 +1,6 @@
 import store from '@/store'
 import { Lexer } from './Lexer'
+import { MUTATIONS } from '@/store/store.const'
 
 export default class Interpreter {
   private tokens: Array<string>
@@ -13,7 +14,7 @@ export default class Interpreter {
     const commandType = this.tokens[0]
     switch (commandType) {
       case 'move': {
-        store.commit('setJointCoordinates', {
+        store.commit(MUTATIONS.SET_JOINT_COORDINATES, {
           joint: this.tokens[1],
           x: this.tokens[2],
           y: this.tokens[3],
@@ -28,7 +29,7 @@ export default class Interpreter {
             : [Number(this.tokens[1]) - 1]
 
         fingers.forEach((fingerIndex) => {
-          store.commit('closeFinger', fingerIndex)
+          store.commit(MUTATIONS.CLOSE_FINGER, fingerIndex)
         })
         break
       }
@@ -39,7 +40,7 @@ export default class Interpreter {
             : [Number(this.tokens[1]) - 1]
 
         fingers.forEach((fingerIndex) => {
-          store.commit('openFinger', fingerIndex)
+          store.commit(MUTATIONS.OPEN_FINGER, fingerIndex)
         })
         break
       }
