@@ -10,11 +10,20 @@ describe('RoboApp test suite', () => {
     cy.get('button').click()
 
     // Assert
-    //cy.get('#joint-display').find('Joint 3')
+    cy.get('#joint-display')
+      .contains('Joint 3')
+      .should('have.text', ' Joint 3  x: 66 y: 77 z: 88')
   })
   it('When close single finger command executed, should close corresponding finger', () => {
+    // Act
     cy.get('textarea').type('close 4')
     cy.get('button').click()
+
+    // Assert
+    cy.get('#tool-display')
+      .find('li')
+      .contains('Finger 4')
+      .should('have.text', ' Finger 4  Closed ')
   })
   it('When close all finger command executed, should close all fingers', () => {
     cy.get('textarea').type('close all')
