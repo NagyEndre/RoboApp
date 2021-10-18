@@ -21,7 +21,7 @@ export default class Interpreter {
       }
       case CommandType.Close: {
         const fingers =
-          this.tokens[1] === 'all'
+          this.tokens[1] === CommandType.All
             ? [0, 1, 2, 3, 4]
             : [Number(this.tokens[1]) - 1]
 
@@ -32,7 +32,7 @@ export default class Interpreter {
       }
       case CommandType.Open: {
         const fingers =
-          this.tokens[1] === 'all'
+          this.tokens[1] === CommandType.All
             ? [0, 1, 2, 3, 4]
             : [Number(this.tokens[1]) - 1]
 
@@ -49,7 +49,8 @@ export default class Interpreter {
 }
 
 enum CommandType {
-  Move = 'move',
-  Open = 'open',
-  Close = 'close',
+  Move = 'MOVE',
+  Open = 'OPEN',
+  Close = 'CLOSE',
+  All = 'ALL',
 }

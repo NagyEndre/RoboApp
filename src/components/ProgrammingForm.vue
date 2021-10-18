@@ -37,6 +37,7 @@ textarea {
   border: 1px solid orange;
   border-radius: 0.25rem;
   padding: 0.5rem;
+  text-transform: uppercase;
 }
 button {
   color: white;
