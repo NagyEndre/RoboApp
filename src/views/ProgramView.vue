@@ -38,13 +38,11 @@ base-card {
 .container {
   display: grid;
   grid-template-columns: repeat(autofill, minmax(200px, 1fr));
-  grid-template-rows: 25vh 25vh;
   margin: 1rem;
 }
 #program-editor {
   grid-column-start: 1;
   grid-column-end: span 2;
-  grid-row-end: span 2;
 }
 #joint-display {
   grid-column-start: 3;
