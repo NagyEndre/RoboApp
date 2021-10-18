@@ -43,10 +43,5 @@ body {
   background-color: rgba(233, 164, 14, 0.116);
   min-width: 350px;
 }
-section {
-  vertical-align: top;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+
 </style>

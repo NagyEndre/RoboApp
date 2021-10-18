@@ -1,16 +1,15 @@
 <template>
-  <section>
-    <base-card title="Robot program">
+  <section class="container">
+    <base-card title="Robot program" id="program-editor">
       <programming-form></programming-form>
     </base-card>
-    <div>
-      <base-card title="Joint display">
-        <joint-display></joint-display>
-      </base-card>
-      <base-card title="Robot hand display">
-        <robot-hand-display></robot-hand-display>
-      </base-card>
-    </div>
+
+    <base-card title="Joint display" id="joint-display">
+      <joint-display></joint-display>
+    </base-card>
+    <base-card title="Robot hand display" id="tool-display">
+      <robot-hand-display></robot-hand-display>
+    </base-card>
   </section>
 </template>
 
@@ -35,5 +34,22 @@ export default class ProgramView extends Vue {}
 <style scoped>
 base-card {
   background-color: blue;
+}
+.container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 25vh 25vh;
+  margin: 1rem;
+}
+#program-editor {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row-end: span 2;
+}
+#joint-display {
+  grid-column-start: 3;
+}
+#tool-display {
+  grid-column-start: 4;
 }
 </style>

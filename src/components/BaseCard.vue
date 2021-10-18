@@ -1,8 +1,8 @@
 <template>
-  <section>
+  <div>
     <h2>{{ title }}</h2>
     <slot></slot>
-  </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,9 +15,8 @@ export default class BaseCard extends Vue {
 </script>
 
 <style scoped>
-section {
+div {
   box-shadow: 0 2px 4px grey;
-  width: 45%;
   height: min-content;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -30,7 +29,7 @@ h2 {
   margin-bottom: 1rem;
 }
 @media screen and (max-width: 800px) {
-  section {
+  div {
     width: 80%;
   }
 }
