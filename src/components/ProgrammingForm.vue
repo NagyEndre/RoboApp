@@ -1,5 +1,5 @@
 <template>
-  <form action="submit" @submit.prevent="run">
+  <form action="submit" @submit.prevent="runProgram">
     <div>
       <textarea
         name="robot-program"
@@ -20,7 +20,7 @@ import Interpreter from '../logic/Interpreter'
 @Component
 export default class ProgrammingForm extends Vue {
   program = ''
-  run() {
+  runProgram() {
     const programLines = this.program.split('\n')
 
     programLines.forEach((line) => {
