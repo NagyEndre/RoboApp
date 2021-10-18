@@ -24,7 +24,15 @@ export default new Vuex.Store({
       state: any,
       payload: { joint: number; x: number; y: number; z: number }
     ): void {
-      state.robot.joints[payload.joint - 1].set(payload.x, payload.y, payload.z)
+      if (payload.x) {
+        state.robot.joints[payload.joint - 1].x = payload.x
+      }
+      if (payload.y) {
+        state.robot.joints[payload.joint - 1].y = payload.y
+      }
+      if (payload.z) {
+        state.robot.joints[payload.joint - 1].z = payload.z
+      }
     },
     openFinger(state, index: number) {
       state.robot.tool.parts[index].open()
