@@ -10,7 +10,7 @@ export default class Interpreter {
   run() {
     const commandType = this.tokens[0]
     switch (commandType) {
-      case 'move': {
+      case CommandType.Move: {
         store.commit(MUTATIONS.SET_JOINT_COORDINATES, {
           joint: this.tokens[1],
           x: this.tokens[2],
@@ -19,7 +19,7 @@ export default class Interpreter {
         })
         break
       }
-      case 'close': {
+      case CommandType.Close: {
         const fingers =
           this.tokens[1] === 'all'
             ? [0, 1, 2, 3, 4]
@@ -30,7 +30,7 @@ export default class Interpreter {
         })
         break
       }
-      case 'open': {
+      case CommandType.Open: {
         const fingers =
           this.tokens[1] === 'all'
             ? [0, 1, 2, 3, 4]
@@ -46,4 +46,10 @@ export default class Interpreter {
       }
     }
   }
+}
+
+enum CommandType {
+  Move = 'move',
+  Open = 'open',
+  Close = 'close',
 }
