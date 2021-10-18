@@ -1,5 +1,5 @@
-import Finger from './Finger'
-import Tool from './Tool'
+import Finger from '@/model//Finger'
+import Tool from '@/model//Tool'
 
 export default class RobotHand extends Tool<Finger> {
   constructor(

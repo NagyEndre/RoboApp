@@ -1,6 +1,6 @@
-import Finger from './Finger'
-import Joint from './Joint'
-import Tool from './Tool'
+import Finger from '@/model//Finger'
+import Joint from '@/model//Joint'
+import Tool from '@/model//Tool'
 
 export default class Robot {
   constructor(public joints: Array<Joint>, public tool: Tool<Finger>) {}
