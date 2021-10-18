@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "cypress/integration/firstTest.test.ts"  ],
+, "cypress/integration/Integration.test.ts"  ],
   "exclude": [
     "node_modules"
   ]
