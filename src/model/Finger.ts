@@ -1,9 +1,13 @@
 export default class Finger {
-  constructor(public isOpen: boolean = true) {}
+  constructor(private _isOpen = true) {}
+
+  get isOpen() {
+    return this._isOpen
+  }
   open() {
-    this.isOpen = true
+    this._isOpen = true
   }
   close() {
-    this.isOpen = false
+    this._isOpen = false
   }
 }

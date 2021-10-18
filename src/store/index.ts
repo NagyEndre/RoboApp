@@ -29,10 +29,10 @@ export default new Vuex.Store({
       state.robot = tmpRobot
     },
     openFinger(state, index: number) {
-      state.robot.tool.parts[index].isOpen = true
+      state.robot.tool.parts[index].open()
     },
     closeFinger(state, index: number) {
-      state.robot.tool.parts[index].isOpen = false
+      state.robot.tool.parts[index].close()
     },
   },
   actions: {},
