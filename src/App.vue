@@ -1,37 +1,20 @@
 <template>
   <div id="app">
     <the-header></the-header>
-    <section>
-      <base-card title="Robot program">
-        <programming-form></programming-form>
-      </base-card>
-      <div>
-        <base-card title="Joint display">
-          <joint-display></joint-display>
-        </base-card>
-        <base-card title="Robot hand display">
-          <robot-hand-display></robot-hand-display>
-        </base-card>
-      </div>
-    </section>
+    <program-view></program-view>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import BaseCard from './components/BaseCard.vue'
-import ProgrammingForm from './components/ProgrammingForm.vue'
-import JointDisplay from './components/JointDisplay.vue'
-import RobotHandDisplay from './components/RobotHandDisplay.vue'
+
 import TheHeader from './components/TheHeader.vue'
+import ProgramView from './views/ProgramView.vue'
 
 @Component({
   components: {
-    BaseCard,
-    ProgrammingForm,
-    JointDisplay,
-    RobotHandDisplay,
     TheHeader,
+    ProgramView,
   },
 })
 export default class App extends Vue {
@@ -58,6 +41,7 @@ export default class App extends Vue {
 }
 body {
   background-color: rgba(233, 164, 14, 0.116);
+  min-width: 350px;
 }
 section {
   vertical-align: top;
