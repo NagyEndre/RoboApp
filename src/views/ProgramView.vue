@@ -37,7 +37,7 @@ base-card {
 }
 .container {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: repeat(autofill, minmax(200px, 1fr));
   grid-template-rows: 25vh 25vh;
   margin: 1rem;
 }

@@ -28,9 +28,4 @@ h2 {
   border-bottom: 2px solid orange;
   margin-bottom: 1rem;
 }
-@media screen and (max-width: 800px) {
-  div {
-    width: 80%;
-  }
-}
 </style>
