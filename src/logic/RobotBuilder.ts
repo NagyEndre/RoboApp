@@ -2,6 +2,7 @@ import Joint from '@/model/Joint'
 import Robot from '@/model/Robot'
 import RobotHand from '@/model/RobotHand'
 import Finger from '@/model/Finger'
+import Gripper from '@/model/Gripper'
 
 export function buildRobot(): Robot {
   const joints = [
@@ -11,12 +12,20 @@ export function buildRobot(): Robot {
     new Joint(8, 8, 8),
     new Joint(10, 10, 10),
   ]
-  const robotHand = new RobotHand(
+  const tool = createRobotHand()
+  
+  return new Robot(joints, tool)
+}
+
+function createRobotHand(): RobotHand{
+  return new RobotHand(
     new Finger(),
     new Finger(),
     new Finger(),
     new Finger(),
     new Finger()
-  )
-  return new Robot(joints, robotHand)
+}
+
+function createGripper(){
+  return new Gripper()
 }
