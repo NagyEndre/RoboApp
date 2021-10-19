@@ -6,7 +6,7 @@ describe('RoboApp test suite', () => {
   })
 
   it('When joint moved, should update corresponding coordinates', () => {
-    cy.get('textarea').type('move 3 66 77 88')
+    cy.get('textarea').type('move 3 x66 y77 z88')
     cy.get('button').click()
 
     cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
@@ -16,8 +16,19 @@ describe('RoboApp test suite', () => {
     })
   })
 
+  it('When not all coordinates are changed, should update only relevant entries', () => {
+    cy.get('textarea').type('move 3 z88 y77')
+    cy.get('button').click()
+
+    cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
+      cy.wrap(joint).find(':nth-child(1)').should('have.text', ' x: 4')
+      cy.wrap(joint).find(':nth-child(2)').should('have.text', ' y: 77')
+      cy.wrap(joint).find(':nth-child(3)').should('have.text', ' z: 88')
+    })
+  })
+
   it('When multiple joints moved, should update coordinates', () => {
-    cy.get('textarea').type('move 3 66 77 88\nmove 4 11 22 33')
+    cy.get('textarea').type('move 3 x66 y77 z88\nmove 4 x11 y22 z33')
     cy.get('button').click()
 
     cy.get('#joint-display').then((joints) => {
@@ -60,5 +71,12 @@ describe('RoboApp test suite', () => {
       .each((item) => {
         expect(item).to.contain('Open')
       })
+  })
+
+  it('When extra whitespace, should appropriately work', () => {
+    cy.get('textarea').type('move     4     y77')
+    cy.get('button').click()
+
+    cy.get(':nth-child(4) > :nth-child(2)').should('have.text', ' y: 77')
   })
 })

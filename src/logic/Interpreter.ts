@@ -9,10 +9,23 @@ export default class Interpreter {
     this.tokens = Lexer.lex(program)
   }
   run() {
-    const commandType = this.tokens[0]
+    const commandType = this.tokens.shift()
+    console.log(this.tokens)
     switch (commandType) {
       case CommandType.Move: {
-        store.commit(MUTATIONS.SET_JOINT_COORDINATES, this.createJointPayload())
+        const jointIndex = Number(this.tokens.shift())
+
+        const coordinates = this.extractAxisCoordinates()
+
+        store.commit(
+          MUTATIONS.SET_JOINT_COORDINATES,
+          this.createJointPayload(
+            jointIndex,
+            coordinates.x,
+            coordinates.y,
+            coordinates.z
+          )
+        )
         break
       }
       case CommandType.Close: {
@@ -37,22 +50,60 @@ export default class Interpreter {
     }
   }
 
-  private createJointPayload() {
+  private extractAxisCoordinates() {
+    let x, y, z
+
+    while (this.tokens.length > 0) {
+      const pos = this.tokens.shift()
+
+      switch (pos?.charAt(0)) {
+        case Axes.X: {
+          x = Number(pos?.substring(1))
+          break
+        }
+        case Axes.Y: {
+          y = Number(pos?.substring(1))
+          break
+        }
+        case Axes.Z: {
+          z = Number(pos?.substring(1))
+          break
+        }
+        default: {
+          throw new Error('Invalid axis specifier')
+        }
+      }
+    }
     return {
-      joint: this.tokens[1],
-      x: this.tokens[2],
-      y: this.tokens[3],
-      z: this.tokens[4],
+      x: x,
+      y: y,
+      z: z,
+    }
+  }
+  private createJointPayload(
+    jointIndex: number | undefined,
+    x: number | undefined,
+    y: number | undefined,
+    z: number | undefined
+  ) {
+    return {
+      joint: jointIndex,
+      x: x,
+      y: y,
+      z: z,
     }
   }
 
   private getFingerIndexes(): number[] {
-    return this.tokens[1] === CommandType.All
-      ? [0, 1, 2, 3, 4]
-      : [Number(this.tokens[1]) - 1]
+    const token = this.tokens.shift()
+    return token === CommandType.All ? [0, 1, 2, 3, 4] : [Number(token) - 1]
   }
 }
-
+enum Axes {
+  X = 'X',
+  Y = 'Y',
+  Z = 'Z',
+}
 enum CommandType {
   Move = 'MOVE',
   Open = 'OPEN',
