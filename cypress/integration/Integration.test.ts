@@ -73,7 +73,7 @@ describe('RoboApp test suite', () => {
       })
   })
 
-  it.only('When extra whitespace, should appropriately work', () => {
+  it('When extra whitespace, should appropriately work', () => {
     cy.get('textarea').type('move     4     y77')
     cy.get('button').click()
 
