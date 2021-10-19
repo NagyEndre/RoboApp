@@ -15,7 +15,7 @@ export default class Interpreter {
       case CommandType.Move: {
         const jointIndex = Number(this.tokens.shift())
 
-        const coordinates = this.extractAxesCoordinates()
+        const coordinates = this.extractAxisCoordinates()
 
         store.commit(
           MUTATIONS.SET_JOINT_COORDINATES,
@@ -50,7 +50,7 @@ export default class Interpreter {
     }
   }
 
-  private extractAxesCoordinates() {
+  private extractAxisCoordinates() {
     let x, y, z
 
     while (this.tokens.length > 0) {
