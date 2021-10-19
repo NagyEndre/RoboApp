@@ -26,8 +26,9 @@ li {
   margin: 0.25rem 0;
 }
 span {
+  display: inline-block;
+  width: 4rem;
   border: 1px solid grey;
-  padding: 0 0.5rem;
   background-color: wheat;
 }
 </style>
