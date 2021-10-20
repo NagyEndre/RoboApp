@@ -6,15 +6,18 @@ import Gripper from '@/model/Gripper'
 import Tool from '@/model/Tool'
 
 export function buildRobot(tool: Tool): Robot {
-  const joints = [
+  const joints = createJointArray()
+  return new Robot(joints, tool)
+}
+
+function createJointArray() {
+  return [
     new Joint(2, 2, 2),
     new Joint(6, 6, 6),
     new Joint(4, 4, 4),
     new Joint(8, 8, 8),
     new Joint(10, 10, 10),
   ]
-
-  return new Robot(joints, tool)
 }
 
 export function createRobotHand(): RobotHand {
