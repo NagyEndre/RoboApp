@@ -10,7 +10,6 @@ export default class Interpreter {
   }
   run() {
     const commandType = this.tokens.shift()
-    console.log(this.tokens)
     switch (commandType) {
       case CommandType.Move: {
         const jointIndex = Number(this.tokens.shift())
