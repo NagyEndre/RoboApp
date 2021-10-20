@@ -1,8 +1,8 @@
 import Tool from '@/model/Tool'
 
-export default class Gripper extends Tool<never> {
+export default class Gripper extends Tool {
   constructor(private _isOpen = true) {
-    super([])
+    super()
   }
   get isOpen() {
     return this._isOpen
