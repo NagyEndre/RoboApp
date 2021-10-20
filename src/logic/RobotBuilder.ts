@@ -5,7 +5,7 @@ import Finger from '@/model/Finger'
 import Gripper from '@/model/Gripper'
 import Tool from '@/model/Tool'
 
-export function buildRobot(tool: Tool): Robot {
+export function buildRobot<T extends Tool<any>>(tool: T) {
   const joints = createJointArray()
   return new Robot(joints, tool)
 }
@@ -20,7 +20,7 @@ function createJointArray() {
   ]
 }
 
-export function createRobotHand(): RobotHand {
+export function createRobotHand() {
   return new RobotHand(
     new Finger(),
     new Finger(),

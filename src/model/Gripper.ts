@@ -1,6 +1,6 @@
 import Tool from '@/model/Tool'
 
-export default class Gripper extends Tool {
+export default class Gripper extends Tool<never> {
   constructor(private _isOpen = true) {
     super()
   }
