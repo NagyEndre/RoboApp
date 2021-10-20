@@ -25,13 +25,13 @@ export default new Vuex.Store({
       payload: { joint: number; x: number; y: number; z: number }
     ): void {
       if (payload.x) {
-        state.robot.joints[payload.joint - 1].x = payload.x
+        state.robot.joints[payload.joint - 1].X = payload.x
       }
       if (payload.y) {
-        state.robot.joints[payload.joint - 1].y = payload.y
+        state.robot.joints[payload.joint - 1].Y = payload.y
       }
       if (payload.z) {
-        state.robot.joints[payload.joint - 1].z = payload.z
+        state.robot.joints[payload.joint - 1].Z = payload.z
       }
     },
     openFinger(state, index: number) {

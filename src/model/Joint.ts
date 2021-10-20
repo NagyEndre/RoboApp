@@ -1,9 +1,9 @@
 export default class Joint {
-  constructor(public x: number, public y: number, public z: number) {}
+  constructor(public X: number, public Y: number, public Z: number) {}
 
   set(x: number, y: number, z: number) {
-    this.x = x
-    this.y = y
-    this.z = z
+    this.X = x
+    this.Y = y
+    this.Z = z
   }
 }
