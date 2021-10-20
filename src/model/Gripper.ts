@@ -8,11 +8,9 @@ export default class Gripper extends Tool<never> {
     return this._isOpen
   }
   open() {
-    console.log('open gripper')
     this._isOpen = true
   }
   close() {
-    console.log('close gripper')
     this._isOpen = false
   }
 }

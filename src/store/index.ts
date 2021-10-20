@@ -47,6 +47,12 @@ export default new Vuex.Store({
     closeFinger(state, index: number) {
       state.robot.tool.parts[index].close()
     },
+    openGripper(state) {
+      state.robot.tool.open()
+    },
+    closeGripper(state) {
+      state.robot.tool.close()
+    },
   },
   actions: {},
   modules: {},

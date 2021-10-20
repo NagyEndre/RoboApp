@@ -43,6 +43,14 @@ export default class Interpreter {
         })
         break
       }
+      case CommandType.OpenGripper: {
+        store.commit(MUTATIONS.OPEN_GRIPPER)
+        break
+      }
+      case CommandType.CloseGripper: {
+        store.commit(MUTATIONS.CLOSE_GRIPPER)
+        break
+      }
       default: {
         throw new Error('Invalid command type')
       }
@@ -108,4 +116,6 @@ enum CommandType {
   Open = 'OPEN',
   Close = 'CLOSE',
   All = 'ALL',
+  OpenGripper = 'OPENGRIPPER',
+  CloseGripper = 'CLOSEGRIPPER',
 }
