@@ -1,18 +1,25 @@
 <template>
-  <ul>
-    <li v-for="(finger, index) in fingers" :key="index">
-      Finger {{ index + 1 }}
-      <span>
-        {{ finger.isOpen ? 'Open' : 'Closed' }}
-      </span>
-    </li>
-  </ul>
+  <base-card title="Robot hand display">
+    <ul>
+      <li v-for="(finger, index) in fingers" :key="index">
+        Finger {{ index + 1 }}
+        <span>
+          {{ finger.isOpen ? 'Open' : 'Closed' }}
+        </span>
+      </li>
+    </ul>
+  </base-card>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import BaseCard from '@/components/BaseCard.vue'
 
-@Component
+@Component({
+  components: {
+    BaseCard,
+  },
+})
 export default class RobotHandDisplay extends Vue {
   get fingers() {
     return this.$store.getters.fingers

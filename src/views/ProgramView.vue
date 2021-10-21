@@ -6,9 +6,12 @@
     <base-card title="Joint display" id="joint-display">
       <joint-display></joint-display>
     </base-card>
-    <base-card v-if="isRobothand" title="Robot hand display" id="tool-display">
-      <robot-hand-display></robot-hand-display>
-    </base-card>
+
+    <robot-hand-display
+      v-if="isRobothand"
+      id="tool-display"
+    ></robot-hand-display>
+
     <base-card v-else title="Gripper display" id="tool-display">
       <gripper-display></gripper-display>
     </base-card>
