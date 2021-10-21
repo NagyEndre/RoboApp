@@ -8,7 +8,7 @@ describe('RoboApp test suite', () => {
   context('Movement', () => {
     it('When joint moved, should update corresponding coordinates', () => {
       cy.get('textarea').type('move 3 x66 y77 z88')
-      cy.get('button').click()
+      cy.get('.btn-primary').click()
 
       cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
         cy.wrap(joint).find(':nth-child(1)').should('contain', '66')
@@ -19,7 +19,7 @@ describe('RoboApp test suite', () => {
 
     it('When not all coordinates are changed, should update only relevant entries', () => {
       cy.get('textarea').type('move 3 z88 y77')
-      cy.get('button').click()
+      cy.get('.btn-primary').click()
 
       cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
         cy.wrap(joint).find(':nth-child(1)').should('contain', '4')
@@ -30,7 +30,7 @@ describe('RoboApp test suite', () => {
 
     it('When extra whitespace, should appropriately work', () => {
       cy.get('textarea').type('move     4     y77')
-      cy.get('button').click()
+      cy.get('.btn-primary').click()
 
       cy.get(':nth-child(4) > :nth-child(2)').should('contain', '77')
     })
@@ -39,7 +39,7 @@ describe('RoboApp test suite', () => {
   context('Tool', () => {
     it('When multiple joints moved, should update coordinates', () => {
       cy.get('textarea').type('move 3 x66 y77 z88\nmove 4 x11 y22 z33')
-      cy.get('button').click()
+      cy.get('.btn-primary').click()
 
       cy.get('#joint-display').then((joints) => {
         cy.wrap(joints)
@@ -53,7 +53,7 @@ describe('RoboApp test suite', () => {
 
     it('When finger closed, should display closed corresponding finger', () => {
       cy.get('textarea').type('close 4')
-      cy.get('button').click()
+      cy.get('.btn-primary').click()
 
       cy.get('#tool-display > ul > :nth-child(4) > span').should(
         'have.text',
@@ -63,7 +63,7 @@ describe('RoboApp test suite', () => {
 
     it('When all fingers closed, should display closed fingers', () => {
       cy.get('textarea').type('close all')
-      cy.get('button').click()
+      cy.get('.btn-primary').click()
 
       cy.get('#tool-display')
         .find('li')
@@ -74,7 +74,7 @@ describe('RoboApp test suite', () => {
 
     it('When all fingers opened, should display opened fingers', () => {
       cy.get('textarea').type('open all')
-      cy.get('button').click()
+      cy.get('.btn-primary').click()
 
       cy.get('#tool-display')
         .find('li')
