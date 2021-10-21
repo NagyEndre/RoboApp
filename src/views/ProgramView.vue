@@ -30,7 +30,7 @@ import RobotHand from '@/model/RobotHand'
     ProgrammingForm,
     JointDisplay,
     RobotHandDisplay,
-    GripperDisplay
+    GripperDisplay,
   },
 })
 export default class ProgramView extends Vue {
