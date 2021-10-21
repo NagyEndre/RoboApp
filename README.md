@@ -1,4 +1,4 @@
-# robo-app
+# 🦾🤖 robo-app
 
 Move the robot joints to different positions and actuate the tool whether it is a robot hand or a gripper.
 
