@@ -8,13 +8,8 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import BaseCard from '@/components/BaseCard.vue'
 
-@Component({
-  components: {
-    BaseCard,
-  },
-})
+@Component
 export default class GripperDisplay extends Vue {
   get gripperState() {
     return this.$store.getters.tool.isOpen ? 'Open' : 'Closed'
