@@ -10,7 +10,6 @@ export default class Interpreter {
   }
   run() {
     const commandType = this.tokens.shift()
-    console.log(this.tokens)
     switch (commandType) {
       case CommandType.Move: {
         const jointIndex = Number(this.tokens.shift())
@@ -42,6 +41,14 @@ export default class Interpreter {
         fingers.forEach((fingerIndex) => {
           store.commit(MUTATIONS.OPEN_FINGER, fingerIndex)
         })
+        break
+      }
+      case CommandType.OpenGripper: {
+        store.commit(MUTATIONS.OPEN_GRIPPER)
+        break
+      }
+      case CommandType.CloseGripper: {
+        store.commit(MUTATIONS.CLOSE_GRIPPER)
         break
       }
       default: {
@@ -109,4 +116,6 @@ enum CommandType {
   Open = 'OPEN',
   Close = 'CLOSE',
   All = 'ALL',
+  OpenGripper = 'OPENGRIPPER',
+  CloseGripper = 'CLOSEGRIPPER',
 }

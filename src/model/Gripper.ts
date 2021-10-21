@@ -1,6 +1,6 @@
 import Tool from '@/model/Tool'
 
-export default class Gripper extends Tool {
+export default class Gripper extends Tool<never> {
   constructor(private _isOpen = true) {
     super()
   }
@@ -8,11 +8,9 @@ export default class Gripper extends Tool {
     return this._isOpen
   }
   open() {
-    console.log('open gripper')
     this._isOpen = true
   }
   close() {
-    console.log('close gripper')
     this._isOpen = false
   }
 }

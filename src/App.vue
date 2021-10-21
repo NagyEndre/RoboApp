@@ -20,7 +20,6 @@ import ProgramView from './views/ProgramView.vue'
 export default class App extends Vue {
   get robot() {
     const robot = this.$store.getters.robot
-    console.log(robot)
     return this.$store.getters.robot
   }
 }
@@ -43,5 +42,10 @@ body {
   background-color: rgba(233, 164, 14, 0.116);
   min-width: 350px;
 }
-
+span {
+  display: inline-block;
+  width: 4rem;
+  border: 1px solid grey;
+  background-color: wheat;
+}
 </style>
