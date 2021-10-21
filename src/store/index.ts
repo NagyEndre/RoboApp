@@ -42,10 +42,10 @@ export default new Vuex.Store({
       }
     },
     openFinger(state, index: number) {
-      state.robot.tool.parts[index].open()
+      state.robot.tool.open(index)
     },
     closeFinger(state, index: number) {
-      state.robot.tool.parts[index].close()
+      state.robot.tool.close(index)
     },
     openGripper(state) {
       state.robot.tool.open()
