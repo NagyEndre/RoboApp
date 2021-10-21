@@ -31,7 +31,7 @@ export default class ProgramView extends Vue {
 <style scoped>
 .container {
   display: grid;
-  grid-template-columns: repeat(autofill, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
   margin: 1rem;
 }
 #program-editor {

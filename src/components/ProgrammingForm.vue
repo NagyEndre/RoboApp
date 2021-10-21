@@ -14,14 +14,8 @@
     </button>
     <div v-if="showHint" id="command_hint">
       <h3>Commands</h3>
-      <ul>
-        <li>MOVE jointIndex Xcoordinate Ycoordinate Zcoordinate</li>
-        <li>OPEN fingerIndex</li>
-        <li>CLOSE fingerIndex</li>
-        <li>OPEN ALL</li>
-        <li>CLOSE ALL</li>
-        <li>OPEN GRIPPER</li>
-        <li>CLOSE GRIPPER</li>
+      <ul v-for="command in commandList" :key="command">
+        <li>{{ command }}</li>
       </ul>
     </div>
   </base-card>
@@ -35,6 +29,15 @@ import Interpreter from '@/logic/Interpreter'
 export default class ProgrammingForm extends Vue {
   program = ''
   showHint = false
+  commandList = [
+    'MOVE jointIndex Xcoordinate Ycoordinate Zcoordinate',
+    'OPEN fingerIndex',
+    'CLOSE fingerIndex',
+    'OPEN ALL',
+    'CLOSE ALL',
+    'OPEN GRIPPER',
+    'CLOSE GRIPPER',
+  ]
   runProgram() {
     const programLines = this.program.split('\n')
 
