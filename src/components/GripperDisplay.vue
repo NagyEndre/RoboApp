@@ -1,7 +1,9 @@
 <template>
-  <p>
-    State: <span>{{ gripperState }}</span>
-  </p>
+  <base-card title="Gripper display">
+    <p>
+      State: <span>{{ gripperState }}</span>
+    </p>
+  </base-card>
 </template>
 
 <script lang="ts">
