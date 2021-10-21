@@ -28,27 +28,27 @@ export default class Interpreter {
         break
       }
       case CommandType.Close: {
-        const fingers = this.getFingerIndexes()
+        if (this.tokens[0] === CommandType.Gripper) {
+          store.commit(MUTATIONS.CLOSE_GRIPPER)
+        } else {
+          const fingers = this.getFingerIndexes()
 
-        fingers.forEach((fingerIndex) => {
-          store.commit(MUTATIONS.CLOSE_FINGER, fingerIndex)
-        })
+          fingers.forEach((fingerIndex) => {
+            store.commit(MUTATIONS.CLOSE_FINGER, fingerIndex)
+          })
+        }
         break
       }
       case CommandType.Open: {
-        const fingers = this.getFingerIndexes()
+        if (this.tokens[0] === CommandType.Gripper) {
+          store.commit(MUTATIONS.OPEN_GRIPPER)
+        } else {
+          const fingers = this.getFingerIndexes()
 
-        fingers.forEach((fingerIndex) => {
-          store.commit(MUTATIONS.OPEN_FINGER, fingerIndex)
-        })
-        break
-      }
-      case CommandType.OpenGripper: {
-        store.commit(MUTATIONS.OPEN_GRIPPER)
-        break
-      }
-      case CommandType.CloseGripper: {
-        store.commit(MUTATIONS.CLOSE_GRIPPER)
+          fingers.forEach((fingerIndex) => {
+            store.commit(MUTATIONS.OPEN_FINGER, fingerIndex)
+          })
+        }
         break
       }
       default: {
@@ -116,6 +116,5 @@ enum CommandType {
   Open = 'OPEN',
   Close = 'CLOSE',
   All = 'ALL',
-  OpenGripper = 'OPENGRIPPER',
-  CloseGripper = 'CLOSEGRIPPER',
+  Gripper = 'GRIPPER',
 }

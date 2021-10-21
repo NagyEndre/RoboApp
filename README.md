@@ -10,8 +10,8 @@ OPEN <fingerIndex>
 CLOSE <fingerIndex>
 OPEN ALL
 CLOSE ALL
-OPENGRIPPER
-CLOSEGRIPPER
+OPEN GRIPPER
+CLOSE GRIPPER
 ```
 
 ## Project setup
