@@ -47,5 +47,6 @@ span {
   width: 4rem;
   border: 1px solid grey;
   background-color: wheat;
+  font-weight: bold;
 }
 </style>
