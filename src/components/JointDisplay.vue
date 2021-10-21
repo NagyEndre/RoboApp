@@ -1,12 +1,14 @@
 <template>
-  <ul>
-    <li v-for="(joint, index) in joints" :key="index">
-      Joint {{ index + 1 }}
-      <span v-for="(value, key) in joint" :key="key">
-        {{ key }}: {{ value }}</span
-      >
-    </li>
-  </ul>
+  <base-card title="Joint display">
+    <ul>
+      <li v-for="(joint, index) in joints" :key="index">
+        Joint {{ index + 1 }}
+        <span v-for="(value, key) in joint" :key="key">
+          {{ key }}: {{ value }}</span
+        >
+      </li>
+    </ul>
+  </base-card>
 </template>
 
 <script lang="ts">

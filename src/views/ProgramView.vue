@@ -3,10 +3,7 @@
     <base-card title="Robot program" id="program-editor">
       <programming-form></programming-form>
     </base-card>
-    <base-card title="Joint display" id="joint-display">
-      <joint-display></joint-display>
-    </base-card>
-
+    <joint-display id="joint-display"></joint-display>
     <robot-hand-display
       v-if="isRobothand"
       id="tool-display"
