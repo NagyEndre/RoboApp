@@ -11,10 +11,7 @@
       v-if="isRobothand"
       id="tool-display"
     ></robot-hand-display>
-
-    <base-card v-else title="Gripper display" id="tool-display">
-      <gripper-display></gripper-display>
-    </base-card>
+    <gripper-display v-else id="tool-display"></gripper-display>
   </section>
 </template>
 
