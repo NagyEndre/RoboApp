@@ -1,15 +1,15 @@
 <template>
-  <form action="submit" @submit.prevent="runProgram">
-    <div>
+  <base-card title="Robot program">
+    <form action="submit" @submit.prevent="runProgram">
       <textarea
         name="robot-program"
         autofocus="autofocus"
         rows="10"
         v-model="program"
       ></textarea>
-    </div>
-    <button type="submit">Run</button>
-  </form>
+      <button type="submit">Run</button>
+    </form>
+  </base-card>
 </template>
 
 <script lang="ts">

@@ -1,8 +1,6 @@
 <template>
   <section class="container">
-    <base-card title="Robot program" id="program-editor">
-      <programming-form></programming-form>
-    </base-card>
+    <programming-form id="program-editor"></programming-form>
     <joint-display id="joint-display"></joint-display>
     <robot-hand-display
       v-if="isRobothand"
@@ -14,7 +12,6 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import BaseCard from '@/components/BaseCard.vue'
 import ProgrammingForm from '@/components/ProgrammingForm.vue'
 import JointDisplay from '@/components/JointDisplay.vue'
 import RobotHandDisplay from '@/components/RobotHandDisplay.vue'
@@ -23,7 +20,6 @@ import RobotHand from '@/model/RobotHand'
 
 @Component({
   components: {
-    BaseCard,
     ProgrammingForm,
     JointDisplay,
     RobotHandDisplay,
@@ -36,9 +32,6 @@ export default class ProgramView extends Vue {
 </script>
 
 <style scoped>
-base-card {
-  background-color: blue;
-}
 .container {
   display: grid;
   grid-template-columns: repeat(autofill, minmax(200px, 1fr));
