@@ -2,11 +2,7 @@
   <section class="container">
     <programming-form id="program-editor"></programming-form>
     <joint-display id="joint-display"></joint-display>
-    <robot-hand-display
-      v-if="isRobothand"
-      id="tool-display"
-    ></robot-hand-display>
-    <gripper-display v-else id="tool-display"></gripper-display>
+    <component :is="toolView" id="tool-display"></component>
   </section>
 </template>
 
@@ -28,6 +24,7 @@ import RobotHand from '@/model/RobotHand'
 })
 export default class ProgramView extends Vue {
   isRobothand = this.$store.getters.robot.tool instanceof RobotHand
+  toolView = this.isRobothand ? 'robot-hand-display' : 'gripper-display'
 }
 </script>
 
