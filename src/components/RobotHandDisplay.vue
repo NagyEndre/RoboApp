@@ -25,10 +25,4 @@ li {
   list-style: none;
   margin: 0.25rem 0;
 }
-span {
-  display: inline-block;
-  width: 4rem;
-  border: 1px solid grey;
-  background-color: wheat;
-}
 </style>
