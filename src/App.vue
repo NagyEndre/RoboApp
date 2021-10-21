@@ -49,4 +49,7 @@ span {
   background-color: wheat;
   font-weight: bold;
 }
+li {
+  list-style: none;
+}
 </style>

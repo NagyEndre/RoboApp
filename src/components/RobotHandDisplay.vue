@@ -24,7 +24,6 @@ export default class RobotHandDisplay extends Vue {
 
 <style scoped>
 li {
-  list-style: none;
   margin: 0.25rem 0;
 }
 </style>

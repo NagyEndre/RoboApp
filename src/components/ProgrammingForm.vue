@@ -1,5 +1,5 @@
 <template>
-  <base-card title="Robot program">
+  <base-card title="Robot program" class="relative">
     <form action="submit" @submit.prevent="runProgram">
       <textarea
         name="robot-program"
@@ -7,8 +7,23 @@
         rows="10"
         v-model="program"
       ></textarea>
-      <button type="submit">Run</button>
+      <button type="submit" class="btn-primary">Run</button>
     </form>
+    <button id="btn_hint" @click="showHint = !showHint">
+      <img src="@/assets/question.svg" />
+    </button>
+    <div v-if="showHint" id="command_hint">
+      <h3>Commands</h3>
+      <ul>
+        <li>MOVE jointIndex Xcoordinate Ycoordinate Zcoordinate</li>
+        <li>OPEN fingerIndex</li>
+        <li>CLOSE fingerIndex</li>
+        <li>OPEN ALL</li>
+        <li>CLOSE ALL</li>
+        <li>OPEN GRIPPER</li>
+        <li>CLOSE GRIPPER</li>
+      </ul>
+    </div>
   </base-card>
 </template>
 
@@ -19,6 +34,7 @@ import Interpreter from '@/logic/Interpreter'
 @Component
 export default class ProgrammingForm extends Vue {
   program = ''
+  showHint = false
   runProgram() {
     const programLines = this.program.split('\n')
 
@@ -39,12 +55,36 @@ textarea {
   padding: 0.5rem;
   text-transform: uppercase;
 }
-button {
+.relative {
+  position: relative;
+}
+.btn-primary {
   color: white;
   background: green;
   padding: 0.25rem 1rem;
   border-radius: 0.25rem;
   font-family: 'Fira Sans', sans-serif;
   text-transform: uppercase;
+}
+h3 {
+  margin-bottom: 0.5rem;
+}
+#btn_hint {
+  background: white;
+  color: black;
+  padding: 0;
+  border-radius: 50%;
+  height: 1.6rem;
+  width: 1.6rem;
+  position: absolute;
+  top: 1vh;
+  right: 1vw;
+}
+#command_hint {
+  text-align: left;
+}
+li {
+  margin: 0.2rem;
+  padding-left: 0.3rem;
 }
 </style>

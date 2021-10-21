@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <h2>{{ title }}</h2>
     <slot></slot>
   </div>
@@ -15,7 +15,7 @@ export default class BaseCard extends Vue {
 </script>
 
 <style scoped>
-div {
+.card {
   box-shadow: 0 2px 4px grey;
   height: min-content;
   padding: 1rem;
