@@ -10,7 +10,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    robot: buildRobot(createGripper()),
+    robot: buildRobot(createRobotHand()),
   },
   getters: {
     joints(state) {
