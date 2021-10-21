@@ -1,5 +1,19 @@
 # robo-app
 
+Move the robot joints to different positions and actuate the tool whether it is a robot hand or a gripper.
+
+## Commands
+
+```
+MOVE <jointIndex> X<coordinate> Y<coordinate> Z<coordinate>
+OPEN <fingerIndex>
+CLOSE <fingerIndex>
+OPEN ALL
+CLOSE ALL
+OPENGRIPPER
+CLOSEGRIPPER
+```
+
 ## Project setup
 
 ```
@@ -10,12 +24,6 @@ npm install
 
 ```
 npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
 ```
 
 ### Lints and fixes files
@@ -36,6 +44,12 @@ npm test
 
 ```
 npx cypress open
+```
+
+### Compiles and minifies for production
+
+```
+npm run build
 ```
 
 ### Customize configuration
