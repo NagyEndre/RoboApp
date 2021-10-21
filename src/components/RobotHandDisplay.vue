@@ -13,13 +13,8 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import BaseCard from '@/components/BaseCard.vue'
 
-@Component({
-  components: {
-    BaseCard,
-  },
-})
+@Component
 export default class RobotHandDisplay extends Vue {
   get fingers() {
     return this.$store.getters.fingers
