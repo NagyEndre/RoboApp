@@ -6,8 +6,6 @@ export const GETTERS = {
 
 export const MUTATIONS = {
   SET_JOINT_COORDINATES: 'setJointCoordinates',
-  OPEN_FINGER: 'openFinger',
-  CLOSE_FINGER: 'closeFinger',
-  OPEN_GRIPPER: 'openGripper',
-  CLOSE_GRIPPER: 'closeGripper',
+  CLOSE_TOOL: 'closeTool',
+  OPEN_TOOL: 'openTool',
 }
