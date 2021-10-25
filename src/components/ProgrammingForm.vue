@@ -31,12 +31,8 @@ export default class ProgrammingForm extends Vue {
   showHint = false
   commandList = [
     'MOVE jointIndex Xcoordinate Ycoordinate Zcoordinate',
-    'OPEN fingerIndex',
-    'CLOSE fingerIndex',
-    'OPEN ALL',
-    'CLOSE ALL',
-    'OPEN GRIPPER',
-    'CLOSE GRIPPER',
+    'OPEN [ ALL | fingerIndex | GRIPPER ]',
+    'CLOSE [ ALL | fingerIndex | GRIPPER ]',
   ]
   runProgram() {
     const programLines = this.program.split('\n')
