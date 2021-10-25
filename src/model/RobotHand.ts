@@ -1,5 +1,6 @@
 import Finger from '@/model/Finger'
 import Tool from '@/model/Tool'
+import { FingerType } from '@/model/FingerType'
 
 export default class RobotHand extends Tool<Finger> {
   constructor(
@@ -31,12 +32,4 @@ export default class RobotHand extends Tool<Finger> {
       finger.open()
     })
   }
-}
-
-enum FingerType {
-  Thumb,
-  Index,
-  Middle,
-  Ring,
-  Little,
 }
