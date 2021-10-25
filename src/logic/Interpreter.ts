@@ -29,24 +29,25 @@ export default class Interpreter {
       }
       case CommandType.Close: {
         if (this.tokens[0] === CommandType.Gripper) {
-          store.commit(MUTATIONS.CLOSE_GRIPPER)
+          store.commit(MUTATIONS.CLOSE_TOOL)
         } else {
           const fingers = this.getFingerIndexes()
+          console.log(fingers)
 
           fingers.forEach((fingerIndex) => {
-            store.commit(MUTATIONS.CLOSE_FINGER, fingerIndex)
+            store.commit(MUTATIONS.CLOSE_TOOL, { fingerIndex: fingerIndex })
           })
         }
         break
       }
       case CommandType.Open: {
         if (this.tokens[0] === CommandType.Gripper) {
-          store.commit(MUTATIONS.OPEN_GRIPPER)
+          store.commit(MUTATIONS.OPEN_TOOL)
         } else {
           const fingers = this.getFingerIndexes()
 
           fingers.forEach((fingerIndex) => {
-            store.commit(MUTATIONS.OPEN_FINGER, fingerIndex)
+            store.commit(MUTATIONS.OPEN_TOOL, { fingerIndex: fingerIndex })
           })
         }
         break

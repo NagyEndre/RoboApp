@@ -30,7 +30,7 @@ export default class ProgrammingForm extends Vue {
   program = ''
   showHint = false
   commandList = [
-    'MOVE jointIndex Xcoordinate Ycoordinate Zcoordinate',
+    'MOVE jointIndex XPos YPos ZPos',
     'OPEN [ ALL | fingerIndex | GRIPPER ]',
     'CLOSE [ ALL | fingerIndex | GRIPPER ]',
   ]

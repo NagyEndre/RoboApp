@@ -5,13 +5,9 @@ Move the robot joints to different positions and actuate the tool whether it is 
 ## Commands
 
 ```
-MOVE <jointIndex> X<coordinate> Y<coordinate> Z<coordinate>
-OPEN <fingerIndex>
-CLOSE <fingerIndex>
-OPEN ALL
-CLOSE ALL
-OPEN GRIPPER
-CLOSE GRIPPER
+MOVE <jointIndex> X<pos> Y<pos> Z<pos>
+OPEN <fingerIndex> | ALL | GRIPPER
+CLOSE <fingerIndex> | ALL | GRIPPER
 ```
 
 ## Project setup

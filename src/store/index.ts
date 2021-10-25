@@ -41,17 +41,21 @@ export default new Vuex.Store({
         state.robot.joints[payload.joint - 1].Z = payload.z
       }
     },
-    openFinger(state, index: number) {
-      state.robot.tool.open(index)
+    openTool(state, payload: { fingerIndex: number }) {
+      if (payload) {
+        state.robot.tool.open(payload.fingerIndex)
+      } else {
+        state.robot.tool.open()
+      }
     },
-    closeFinger(state, index: number) {
-      state.robot.tool.close(index)
-    },
-    openGripper(state) {
-      state.robot.tool.open()
-    },
-    closeGripper(state) {
-      state.robot.tool.close()
+    closeTool(state, payload: { fingerIndex: number }) {
+      console.log(payload)
+      if (payload) {
+        state.robot.tool.close(payload.fingerIndex)
+      } else {
+        console.log('here')
+        state.robot.tool.close()
+      }
     },
   },
   actions: {},
