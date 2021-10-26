@@ -1,16 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {
-  buildRobot,
-  createGripper,
-  createRobotHand,
-} from '@/logic/RobotBuilder'
+import RobotBuilder, { RobotHandBuilder } from '@/logic/RobotBuilder'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    robot: buildRobot(createRobotHand()),
+    robot: new RobotBuilder(new RobotHandBuilder())
+      .buildJoints(6)
+      .buildTool()
+      .build(),
   },
   getters: {
     joints(state) {

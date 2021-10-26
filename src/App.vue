@@ -17,12 +17,7 @@ import ProgramView from './views/ProgramView.vue'
     ProgramView,
   },
 })
-export default class App extends Vue {
-  get robot() {
-    const robot = this.$store.getters.robot
-    return this.$store.getters.robot
-  }
-}
+export default class App extends Vue {}
 </script>
 
 <style>
