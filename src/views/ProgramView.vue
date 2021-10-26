@@ -23,8 +23,12 @@ import RobotHand from '@/model/RobotHand'
   },
 })
 export default class ProgramView extends Vue {
-  isRobothand = this.$store.getters.robot.tool instanceof RobotHand
-  toolView = this.isRobothand ? 'robot-hand-display' : 'gripper-display'
+  get isRobothand() {
+    return this.$store.getters.robot.tool instanceof RobotHand
+  }
+  get toolView() {
+    return this.isRobothand ? 'robot-hand-display' : 'gripper-display'
+  }
 }
 </script>
 
