@@ -1,0 +1,61 @@
+<template>
+  <base-card title="Robot selector">
+    <select name="" id="" v-model="selectedRobotName">
+      <option v-for="robot in robots" :key="robot.name" :value="robot.name">
+        {{ robot.name }}
+      </option>
+    </select>
+  </base-card>
+</template>
+
+<script lang="ts">
+import { Vue, Component, Watch } from 'vue-property-decorator'
+import robotConfigs from '@/model/robotConfigs.json'
+import { ToolType } from '@/model/ToolType'
+import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
+
+@Component
+export default class RobotSelector extends Vue {
+  currentRobot = robotConfigs.robotConfigurations[0]
+  selectedRobotName = this.currentRobot.name
+  robots: RobotConfig[] = robotConfigs.robotConfigurations
+
+
+  @Watch('selectedRobotName')
+  onRobotChanged() {
+    const currentRobot = this.robots.find(
+      (robot) => robot.name === this.selectedRobotName
+    )
+    if (!currentRobot) {
+      throw new Error('Could not find robot.')
+    }
+
+    let builder = this.getToolBuilder(currentRobot.toolType)
+
+    this.$store.commit('setRobot', {
+      numOfJoints: currentRobot.numberOfAxes,
+      builder: builder,
+    })
+  }
+
+  private getToolBuilder(toolType: string) {
+    switch (toolType) {
+      case ToolType.Gripper: {
+        return new GripperBuilder()
+      }
+      case ToolType.RobotHand: {
+        return new RobotHandBuilder()
+      }
+      default: {
+        throw new Error('Unsupported tool type')
+      }
+    }
+  }
+}
+
+interface RobotConfig {
+  name: string
+  numberOfAxes: number
+  toolType: string
+}
+</script>
