@@ -32,7 +32,6 @@ export default class Interpreter {
           store.commit(MUTATIONS.CLOSE_TOOL)
         } else {
           const fingers = this.getFingerIndexes()
-          console.log(fingers)
 
           fingers.forEach((fingerIndex) => {
             store.commit(MUTATIONS.CLOSE_TOOL, { fingerIndex: fingerIndex })

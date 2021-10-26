@@ -54,7 +54,6 @@ export default new Vuex.Store({
       }
     },
     closeTool(state, payload: { fingerIndex: number }) {
-      console.log(payload)
       if (payload) {
         state.robot.tool.close(payload.fingerIndex)
       } else {
