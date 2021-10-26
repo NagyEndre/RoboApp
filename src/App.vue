@@ -2,45 +2,46 @@
   <div id="app">
     <the-header></the-header>
     <program-view></program-view>
+    <robot-selector></robot-selector>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import TheHeader from '@/components/TheHeader.vue'
-import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
 import ProgramView from '@/views/ProgramView.vue'
+import RobotSelector from '@/components/RobotSelector.vue'
 import robotConfigs from '@/model/robotConfigs.json'
+import { ToolType } from '@/model/ToolType'
+import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
 
 @Component({
   components: {
     TheHeader,
     ProgramView,
+    RobotSelector,
   },
 })
 export default class App extends Vue {
   currentRobot = robotConfigs.robotConfigurations[0]
   beforeMount() {
-    let builder
-    switch (this.currentRobot.toolType) {
-      case ToolType.Gripper: {
-        builder = new GripperBuilder()
-        break
-      }
-      case ToolType.RobotHand: {
-        builder = new RobotHandBuilder()
-      }
-    }
+    const builder = this.getToolBuilder(this.currentRobot.toolType)
+
     this.$store.commit('setRobot', {
       numOfJoints: this.currentRobot.numberOfAxes,
       builder: builder,
     })
   }
-}
-
-enum ToolType {
-  Gripper = 'Gripper',
-  RobotHand = 'RobotHand',
+  private getToolBuilder(toolType: string) {
+    switch (toolType) {
+      case ToolType.Gripper: {
+        return new GripperBuilder()
+      }
+      case ToolType.RobotHand: {
+        return new RobotHandBuilder()
+      }
+    }
+  }
 }
 </script>
 
