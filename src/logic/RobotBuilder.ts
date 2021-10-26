@@ -26,7 +26,7 @@ export default class RobotBuilder<T extends Tool<any>> {
   public buildJoints(numOfJoints: number): RobotBuilder<T> {
     this.joints = []
     for (let i = 0; i < numOfJoints; i++) {
-      const pos = i + 2
+      const pos = i * 2
       this.joints.push(new Joint(pos, pos, pos))
     }
     return this
