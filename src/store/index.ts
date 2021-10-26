@@ -1,15 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import RobotBuilder, { RobotHandBuilder } from '@/logic/RobotBuilder'
+import RobotBuilder, { ToolBuilder } from '@/logic/RobotBuilder'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    robot: new RobotBuilder(new RobotHandBuilder())
-      .buildJoints(6)
-      .buildTool()
-      .build(),
+    robot: {},
   },
   getters: {
     joints(state) {
@@ -26,6 +23,15 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setRobot(
+      state,
+      payload: { numOfJoints: number; builder: ToolBuilder<any> }
+    ) {
+      state.robot = new RobotBuilder(payload.builder)
+        .buildJoints(payload.numOfJoints)
+        .buildTool()
+        .build()
+    },
     setJointCoordinates(
       state: any,
       payload: { joint: number; x: number; y: number; z: number }

@@ -1,0 +1,14 @@
+{
+  "robotConfigurations": [
+    {
+      "name": "Cobot",
+      "numberOfAxes": 7,
+      "toolType": "RobotHand"
+    },
+    {
+      "name": "Industrial",
+      "numberOfAxes": 5,
+      "toolType": "Gripper"
+    }
+  ]
+}

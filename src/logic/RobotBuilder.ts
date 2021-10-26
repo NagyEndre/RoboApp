@@ -42,7 +42,7 @@ export default class RobotBuilder<T extends Tool<any>> {
   }
 }
 
-interface ToolBuilder<T> {
+export interface ToolBuilder<T> {
   build(): T
 }
 
