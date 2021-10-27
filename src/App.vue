@@ -7,9 +7,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-
-import TheHeader from './components/TheHeader.vue'
-import ProgramView from './views/ProgramView.vue'
+import { MUTATIONS } from '@/store/store.const'
+import TheHeader from '@/components/TheHeader.vue'
+import ProgramView from '@/views/ProgramView.vue'
+import robotConfigs from '@/model/robotConfigs.json'
+import { ToolType } from '@/model/tools/ToolType'
+import { GripperBuilder } from '@/logic/builders/GripperBuilder'
+import { RobotHandBuilder } from '@/logic/builders/RobotHandBuilder'
 
 @Component({
   components: {
@@ -18,9 +22,24 @@ import ProgramView from './views/ProgramView.vue'
   },
 })
 export default class App extends Vue {
-  get robot() {
-    const robot = this.$store.getters.robot
-    return this.$store.getters.robot
+  currentRobot = robotConfigs.robotConfigurations[0]
+  beforeMount() {
+    const builder = this.getToolBuilder(this.currentRobot.toolType)
+
+    this.$store.commit(MUTATIONS.SET_ROBOT, {
+      numOfJoints: this.currentRobot.numberOfAxes,
+      builder: builder,
+    })
+  }
+  private getToolBuilder(toolType: string) {
+    switch (toolType) {
+      case ToolType.Gripper: {
+        return new GripperBuilder()
+      }
+      case ToolType.RobotHand: {
+        return new RobotHandBuilder()
+      }
+    }
   }
 }
 </script>

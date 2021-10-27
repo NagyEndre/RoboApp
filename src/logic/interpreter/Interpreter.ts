@@ -1,5 +1,5 @@
 import store from '@/store'
-import { Lexer } from '@/logic/Lexer'
+import { Lexer } from '@/logic/interpreter/Lexer'
 import { MUTATIONS } from '@/store/store.const'
 
 export default class Interpreter {
@@ -32,7 +32,6 @@ export default class Interpreter {
           store.commit(MUTATIONS.CLOSE_TOOL)
         } else {
           const fingers = this.getFingerIndexes()
-          console.log(fingers)
 
           fingers.forEach((fingerIndex) => {
             store.commit(MUTATIONS.CLOSE_TOOL, { fingerIndex: fingerIndex })

@@ -1,16 +1,14 @@
-import Finger from '@/model/Finger'
-import Tool from '@/model/Tool'
-import { FingerType } from '@/model/FingerType'
+import Finger from '@/model/tools/Finger'
+import Tool from '@/model/tools/Tool'
+import { FingerType } from '@/model/tools/FingerType'
 
 export default class RobotHand extends Tool<Finger> {
-  constructor(
-    thumb: Finger,
-    index: Finger,
-    middle: Finger,
-    ring: Finger,
-    little: Finger
-  ) {
-    super([thumb, index, middle, ring, little])
+  constructor(fingers: Finger[]) {
+    if (fingers.length !== 5) {
+      throw new Error('Hand must have 5 fingers.')
+    } else {
+      super(fingers)
+    }
   }
 
   close(finger: FingerType) {

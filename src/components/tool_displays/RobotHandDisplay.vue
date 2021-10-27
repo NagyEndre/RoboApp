@@ -17,7 +17,7 @@ import { Vue, Component } from 'vue-property-decorator'
 @Component
 export default class RobotHandDisplay extends Vue {
   get fingers() {
-    return this.$store.getters.fingers
+    return this.$store.getters.tool.parts
   }
 }
 </script>

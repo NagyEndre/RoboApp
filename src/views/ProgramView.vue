@@ -10,9 +10,9 @@
 import { Vue, Component } from 'vue-property-decorator'
 import ProgrammingForm from '@/components/ProgrammingForm.vue'
 import JointDisplay from '@/components/JointDisplay.vue'
-import RobotHandDisplay from '@/components/RobotHandDisplay.vue'
-import GripperDisplay from '@/components/GripperDisplay.vue'
-import RobotHand from '@/model/RobotHand'
+import RobotHandDisplay from '@/components/tool_displays/RobotHandDisplay.vue'
+import GripperDisplay from '@/components/tool_displays/GripperDisplay.vue'
+import RobotHand from '@/model/tools/RobotHand'
 
 @Component({
   components: {
@@ -23,8 +23,12 @@ import RobotHand from '@/model/RobotHand'
   },
 })
 export default class ProgramView extends Vue {
-  isRobothand = this.$store.getters.robot.tool instanceof RobotHand
-  toolView = this.isRobothand ? 'robot-hand-display' : 'gripper-display'
+  get isRobothand() {
+    return this.$store.getters.robot.tool instanceof RobotHand
+  }
+  get toolView() {
+    return this.isRobothand ? 'robot-hand-display' : 'gripper-display'
+  }
 }
 </script>
 
