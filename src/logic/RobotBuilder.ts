@@ -1,9 +1,9 @@
 import Joint from '@/model/Joint'
 import Robot from '@/model/Robot'
-import RobotHand from '@/model/Tools/RobotHand'
-import Finger from '@/model/Tools/Finger'
-import Gripper from '@/model/Tools/Gripper'
-import Tool from '@/model/Tools/Tool'
+import RobotHand from '@/model/tools/RobotHand'
+import Finger from '@/model/tools/Finger'
+import Gripper from '@/model/tools/Gripper'
+import Tool from '@/model/tools/Tool'
 
 export default class RobotBuilder<T extends Tool<any>> {
   private joints: Joint[] | null = null
