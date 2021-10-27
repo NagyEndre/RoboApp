@@ -10,8 +10,8 @@
 import { Vue, Component } from 'vue-property-decorator'
 import ProgrammingForm from '@/components/ProgrammingForm.vue'
 import JointDisplay from '@/components/JointDisplay.vue'
-import RobotHandDisplay from '@/components/RobotHandDisplay.vue'
-import GripperDisplay from '@/components/GripperDisplay.vue'
+import RobotHandDisplay from '@/components/tool_display/RobotHandDisplay.vue'
+import GripperDisplay from '@/components/tool_display/GripperDisplay.vue'
 import RobotHand from '@/model/Tools/RobotHand'
 
 @Component({
