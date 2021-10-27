@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator'
+import { MUTATIONS } from '@/store/store.const'
 import robotConfigs from '@/model/robotConfigs.json'
 import { ToolType } from '@/model/ToolType'
 import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
@@ -32,7 +33,7 @@ export default class RobotSelector extends Vue {
 
     let builder = this.getToolBuilder(currentRobot.toolType)
 
-    this.$store.commit('setRobot', {
+    this.$store.commit(MUTATIONS.SET_ROBOT, {
       numOfJoints: currentRobot.numberOfAxes,
       builder: builder,
     })

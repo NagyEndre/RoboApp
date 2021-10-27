@@ -7,6 +7,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { MUTATIONS } from '@/store/store.const'
 import TheHeader from '@/components/TheHeader.vue'
 import ProgramView from '@/views/ProgramView.vue'
 import robotConfigs from '@/model/robotConfigs.json'
@@ -24,7 +25,7 @@ export default class App extends Vue {
   beforeMount() {
     const builder = this.getToolBuilder(this.currentRobot.toolType)
 
-    this.$store.commit('setRobot', {
+    this.$store.commit(MUTATIONS.SET_ROBOT, {
       numOfJoints: this.currentRobot.numberOfAxes,
       builder: builder,
     })
