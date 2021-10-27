@@ -12,7 +12,8 @@ import TheHeader from '@/components/TheHeader.vue'
 import ProgramView from '@/views/ProgramView.vue'
 import robotConfigs from '@/model/robotConfigs.json'
 import { ToolType } from '@/model/tools/ToolType'
-import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
+import { GripperBuilder } from '@/logic/builders/GripperBuilder'
+import { RobotHandBuilder } from '@/logic/builders/RobotHandBuilder'
 
 @Component({
   components: {

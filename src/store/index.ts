@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import RobotBuilder, { ToolBuilder } from '@/logic/RobotBuilder'
+import RobotBuilder from '@/logic/builders/RobotBuilder'
+import { ToolBuilder } from '@/logic/builders/ToolBuilder'
 
 Vue.use(Vuex)
 

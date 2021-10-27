@@ -14,7 +14,8 @@ import { Vue, Component, Watch } from 'vue-property-decorator'
 import { MUTATIONS } from '@/store/store.const'
 import robotConfigs from '@/model/robotConfigs.json'
 import { ToolType } from '@/model/tools/ToolType'
-import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
+import { GripperBuilder } from '@/logic/builders/GripperBuilder'
+import { RobotHandBuilder } from '@/logic/builders/RobotHandBuilder'
 
 @Component
 export default class RobotSelector extends Vue {

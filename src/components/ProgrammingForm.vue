@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import Interpreter from '@/logic/Interpreter'
+import Interpreter from '@/logic/interpreter/Interpreter'
 
 @Component
 export default class ProgrammingForm extends Vue {

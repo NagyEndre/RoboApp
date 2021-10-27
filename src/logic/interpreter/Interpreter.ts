@@ -1,5 +1,5 @@
 import store from '@/store'
-import { Lexer } from '@/logic/Lexer'
+import { Lexer } from '@/logic/interpreter/Lexer'
 import { MUTATIONS } from '@/store/store.const'
 
 export default class Interpreter {

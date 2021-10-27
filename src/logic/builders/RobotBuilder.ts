@@ -1,9 +1,7 @@
 import Joint from '@/model/Joint'
 import Robot from '@/model/Robot'
-import RobotHand from '@/model/tools/RobotHand'
-import Finger from '@/model/tools/Finger'
-import Gripper from '@/model/tools/Gripper'
 import Tool from '@/model/tools/Tool'
+import { ToolBuilder } from './ToolBuilder'
 
 export default class RobotBuilder<T extends Tool<any>> {
   private joints: Joint[] | null = null
@@ -15,7 +13,6 @@ export default class RobotBuilder<T extends Tool<any>> {
   }
 
   public build(): Robot<T> {
-    //reset builder
     if (this.tool && this.joints) {
       return new Robot(this.joints, this.tool)
     } else {
@@ -39,27 +36,5 @@ export default class RobotBuilder<T extends Tool<any>> {
   public changeToolBuilder(builder: ToolBuilder<T>) {
     this.toolBuilder = builder
     return this
-  }
-}
-
-export interface ToolBuilder<T> {
-  build(): T
-}
-
-export class GripperBuilder implements ToolBuilder<Gripper> {
-  build() {
-    return new Gripper()
-  }
-}
-
-export class RobotHandBuilder implements ToolBuilder<RobotHand> {
-  build() {
-    return new RobotHand(
-      new Finger(),
-      new Finger(),
-      new Finger(),
-      new Finger(),
-      new Finger()
-    )
   }
 }
