@@ -1,4 +1,4 @@
-import Tool from '@/model/Tool'
+import Tool from '@/model/Tools/Tool'
 
 export default class Gripper extends Tool<never> {
   constructor(private _isOpen = true) {

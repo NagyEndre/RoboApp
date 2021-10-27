@@ -11,7 +11,7 @@ import { MUTATIONS } from '@/store/store.const'
 import TheHeader from '@/components/TheHeader.vue'
 import ProgramView from '@/views/ProgramView.vue'
 import robotConfigs from '@/model/robotConfigs.json'
-import { ToolType } from '@/model/ToolType'
+import { ToolType } from '@/model/Tools/ToolType'
 import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
 
 @Component({

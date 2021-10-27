@@ -12,7 +12,7 @@ import ProgrammingForm from '@/components/ProgrammingForm.vue'
 import JointDisplay from '@/components/JointDisplay.vue'
 import RobotHandDisplay from '@/components/RobotHandDisplay.vue'
 import GripperDisplay from '@/components/GripperDisplay.vue'
-import RobotHand from '@/model/RobotHand'
+import RobotHand from '@/model/Tools/RobotHand'
 
 @Component({
   components: {
