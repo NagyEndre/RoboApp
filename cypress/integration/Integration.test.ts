@@ -34,9 +34,7 @@ describe('RoboApp test suite', () => {
 
       cy.get(':nth-child(4) > :nth-child(2)').should('contain', '77')
     })
-  })
 
-  context('Tool', () => {
     it('When multiple joints moved, should update coordinates', () => {
       cy.get('textarea').type('move 3 x66 y77 z88\nmove 4 x11 y22 z33')
       cy.get('.btn-primary').click()
@@ -50,7 +48,9 @@ describe('RoboApp test suite', () => {
           .should('have.text', ' Joint 4  X: 11 Y: 22 Z: 33')
       })
     })
+  })
 
+  context('RobotHand', () => {
     it('When finger closed, should display closed corresponding finger', () => {
       cy.get('textarea').type('close 4')
       cy.get('.btn-primary').click()
@@ -83,4 +83,21 @@ describe('RoboApp test suite', () => {
         })
     })
   })
+  context('Gripper', () => {
+    beforeEach('Navigate to robot with gripper', () => {
+      cy.get('select').select('Industrial')
+    })
+    it('When closing/opening gripper, should update display', () => {
+      executeProgram('close gripper')
+      cy.get('p > span').should('have.text', 'Closed')
+
+      executeProgram('open gripper')
+      cy.get('p > span').should('have.text', 'Open')
+    })
+  })
 })
+
+function executeProgram(command: string) {
+  cy.get('textarea').clear().type(command)
+  cy.get('.btn-primary').click()
+}
