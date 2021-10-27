@@ -2,7 +2,6 @@
   <div id="app">
     <the-header></the-header>
     <program-view></program-view>
-    <robot-selector></robot-selector>
   </div>
 </template>
 
@@ -10,7 +9,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import TheHeader from '@/components/TheHeader.vue'
 import ProgramView from '@/views/ProgramView.vue'
-import RobotSelector from '@/components/RobotSelector.vue'
 import robotConfigs from '@/model/robotConfigs.json'
 import { ToolType } from '@/model/ToolType'
 import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
@@ -19,7 +17,6 @@ import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
   components: {
     TheHeader,
     ProgramView,
-    RobotSelector,
   },
 })
 export default class App extends Vue {

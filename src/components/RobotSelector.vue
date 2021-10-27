@@ -1,11 +1,12 @@
 <template>
-  <base-card title="Robot selector">
+  <div>
+    <label>Robot:</label>
     <select name="" id="" v-model="selectedRobotName">
       <option v-for="robot in robots" :key="robot.name" :value="robot.name">
         {{ robot.name }}
       </option>
     </select>
-  </base-card>
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,7 +20,6 @@ export default class RobotSelector extends Vue {
   currentRobot = robotConfigs.robotConfigurations[0]
   selectedRobotName = this.currentRobot.name
   robots: RobotConfig[] = robotConfigs.robotConfigurations
-
 
   @Watch('selectedRobotName')
   onRobotChanged() {
@@ -59,3 +59,9 @@ interface RobotConfig {
   toolType: string
 }
 </script>
+<style scoped>
+label {
+  margin-right: 0.3rem;
+  font-weight: bold;
+}
+</style>
