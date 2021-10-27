@@ -7,7 +7,7 @@
     },
     {
       "name": "Industrial",
-      "numberOfAxes": 5,
+      "numberOfAxes": 4,
       "toolType": "Gripper"
     }
   ]
