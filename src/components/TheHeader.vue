@@ -13,7 +13,7 @@ export default class TheHeader extends Vue {}
 </script>
 <style scoped>
 header {
-  background: linear-gradient(178deg, forestgreen, orange);
+  background: linear-gradient(160deg, forestgreen, orange);
   color: white;
   padding: 1rem 2rem;
   box-shadow: 0 2px 4px grey;

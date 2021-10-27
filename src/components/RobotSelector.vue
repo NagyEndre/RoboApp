@@ -60,8 +60,18 @@ interface RobotConfig {
 }
 </script>
 <style scoped>
+div > label,
+select {
+  font-size: 1.2rem;
+}
 label {
   margin-right: 0.3rem;
   font-weight: bold;
+}
+select {
+  border-radius: 0.3rem;
+  background-color: wheat;
+  color: forestgreen;
+  padding: 0.1rem 0.2rem;
 }
 </style>
