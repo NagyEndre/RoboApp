@@ -77,11 +77,21 @@ describe('RoboApp test suite', () => {
     })
   })
 
+  context('Robot change', () => {
+    it('When different robot selected, should display corresponding tool', () => {
+      cy.get('#tool-display > h2').should('have.text', 'Robot hand display')
+      cy.get('select').select('Industrial')
+      cy.get('#tool-display > h2').should('have.text', 'Gripper display')
+      cy.get('select').select('Cobot')
+      cy.get('#tool-display > h2').should('have.text', 'Robot hand display')
+    })
+  })
+
   context('Gripper', () => {
     beforeEach('Navigate to robot with gripper', () => {
       cy.get('select').select('Industrial')
     })
-    
+
     it('When closing/opening gripper, should update display', () => {
       executeProgram('close gripper')
       cy.get('p > span').should('have.text', 'Closed')
