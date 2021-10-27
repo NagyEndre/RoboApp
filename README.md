@@ -1,6 +1,6 @@
 # :mechanical_arm::robot: robo-app
 
-Move the robot joints to different positions and actuate the tool whether it is a robot hand or a gripper.
+Move the robot joints to different positions and actuate the tool whether it is a robot hand or a gripper.  
 Create your own robot setup in a [config file](src/model/robotConfigs.json) and change robot runtime.
 
 ## Commands
