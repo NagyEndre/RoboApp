@@ -13,7 +13,7 @@
 import { Vue, Component, Watch } from 'vue-property-decorator'
 import { MUTATIONS } from '@/store/store.const'
 import robotConfigs from '@/model/robotConfigs.json'
-import { ToolType } from '@/model/Tools/ToolType'
+import { ToolType } from '@/model/tools/ToolType'
 import { GripperBuilder, RobotHandBuilder } from '@/logic/RobotBuilder'
 
 @Component
