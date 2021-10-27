@@ -33,8 +33,4 @@ export default class RobotBuilder<T extends Tool<any>> {
     this.tool = this.toolBuilder.build()
     return this
   }
-  public changeToolBuilder(builder: ToolBuilder<T>) {
-    this.toolBuilder = builder
-    return this
-  }
 }
