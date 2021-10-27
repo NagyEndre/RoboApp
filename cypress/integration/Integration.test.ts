@@ -6,13 +6,21 @@ describe('RoboApp test suite', () => {
   })
 
   context('Movement', () => {
+    function nthChildShouldContain(
+      element: JQuery<HTMLElement>,
+      nthChild: number,
+      text: number
+    ) {
+      cy.wrap(element).find(`:nth-child(${nthChild})`).should('contain', text)
+    }
+
     it('When joint moved, should update corresponding coordinates', () => {
       executeProgram('move 3 x66 y77 z88')
 
       cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
-        cy.wrap(joint).find(':nth-child(1)').should('contain', '66')
-        cy.wrap(joint).find(':nth-child(2)').should('contain', '77')
-        cy.wrap(joint).find(':nth-child(3)').should('contain', '88')
+        nthChildShouldContain(joint, 1, 66)
+        nthChildShouldContain(joint, 2, 77)
+        nthChildShouldContain(joint, 3, 88)
       })
     })
 
@@ -20,9 +28,9 @@ describe('RoboApp test suite', () => {
       executeProgram('move 3 z88 y77')
 
       cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
-        cy.wrap(joint).find(':nth-child(1)').should('contain', '4')
-        cy.wrap(joint).find(':nth-child(2)').should('contain', '77')
-        cy.wrap(joint).find(':nth-child(3)').should('contain', '88')
+        nthChildShouldContain(joint, 1, 4)
+        nthChildShouldContain(joint, 2, 77)
+        nthChildShouldContain(joint, 3, 88)
       })
     })
 
