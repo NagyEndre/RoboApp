@@ -1,13 +1,23 @@
 <template>
   <base-card title="Joint display">
-    <ul>
-      <li v-for="(joint, index) in joints" :key="index">
-        Joint {{ index + 1 }}
-        <span v-for="(value, key) in joint" :key="key">
-          {{ key }}: {{ value }}</span
-        >
-      </li>
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <td>
+            <h3>Joint</h3>
+          </td>
+          <td>X</td>
+          <td>Y</td>
+          <td>Z</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(joint, index) in joints" :key="index">
+          <td>{{ index + 1 }}</td>
+          <td v-for="(value, key) in joint" :key="key">{{ value }}</td>
+        </tr>
+      </tbody>
+    </table>
   </base-card>
 </template>
 
@@ -23,7 +33,21 @@ export default class JointDisplay extends Vue {
 </script>
 
 <style scoped>
-li {
-  margin: 0.25rem 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead,
+td:first-child {
+  background-color: wheat;
+}
+table,
+td {
+  border: 1px solid grey;
+  font-weight: bold;
+}
+td:first-child {
+  padding: 0;
+  max-width: 1rem;
 }
 </style>
