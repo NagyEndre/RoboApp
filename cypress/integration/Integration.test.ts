@@ -6,51 +6,37 @@ describe('RoboApp test suite', () => {
   })
 
   context('Movement', () => {
-    function nthChildShouldContain(
-      element: JQuery<HTMLElement>,
-      nthChild: number,
-      text: number
-    ) {
-      cy.wrap(element).find(`:nth-child(${nthChild})`).should('contain', text)
-    }
-
     it('When joint moved, should update corresponding coordinates', () => {
       executeProgram('move 3 x66 y77 z88')
 
-      cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
-        nthChildShouldContain(joint, 1, 66)
-        nthChildShouldContain(joint, 2, 77)
-        nthChildShouldContain(joint, 3, 88)
-      })
+      assertJointPosition(3, Axis.X, 66)
+      assertJointPosition(3, Axis.Y, 77)
+      assertJointPosition(3, Axis.Z, 88)
     })
 
     it('When not all coordinates are changed, should update only relevant entries', () => {
-      executeProgram('move 3 z88 y77')
+      executeProgram('move 2 z88 y77')
 
-      cy.get('#joint-display > ul > :nth-child(3)').then((joint) => {
-        nthChildShouldContain(joint, 1, 4)
-        nthChildShouldContain(joint, 2, 77)
-        nthChildShouldContain(joint, 3, 88)
-      })
+      assertJointPosition(2, Axis.X, 2)
+      assertJointPosition(2, Axis.Y, 77)
+      assertJointPosition(2, Axis.Z, 88)
     })
 
     it('When extra whitespace, should appropriately work', () => {
       executeProgram('move     4     y77')
 
-      cy.get(':nth-child(4) > :nth-child(2)').should('contain', '77')
+      assertJointPosition(4, Axis.Y, 77)
     })
 
     it('When multiple joints moved, should update coordinates', () => {
       executeProgram('move 3 x66 y77 z88\nmove 4 x11 y22 z33')
 
-      cy.get('#joint-display').then((joints) => {
-        cy.wrap(joints)
-          .contains('Joint 3')
-          .should('have.text', ' Joint 3  X: 66 Y: 77 Z: 88')
-        cy.wrap(joints)
-          .contains('Joint 4')
-          .should('have.text', ' Joint 4  X: 11 Y: 22 Z: 33')
-      })
+      assertJointPosition(3, Axis.X, 66)
+      assertJointPosition(3, Axis.Y, 77)
+      assertJointPosition(3, Axis.Z, 88)
+      assertJointPosition(4, Axis.X, 11)
+      assertJointPosition(4, Axis.Y, 22)
+      assertJointPosition(4, Axis.Z, 33)
     })
   })
 
@@ -58,30 +44,19 @@ describe('RoboApp test suite', () => {
     it('When finger closed, should display closed corresponding finger', () => {
       executeProgram('close 4')
 
-      cy.get('#tool-display > ul > :nth-child(4) > span').should(
-        'have.text',
-        ' Closed '
-      )
+      assertFingerState(4, State.Closed)
     })
 
     it('When all fingers closed, should display closed fingers', () => {
       executeProgram('close all')
 
-      cy.get('#tool-display')
-        .find('li')
-        .each((item) => {
-          expect(item).to.contain('Closed')
-        })
+      assertAllFingerState(State.Closed)
     })
 
     it('When all fingers opened, should display opened fingers', () => {
       executeProgram('open all')
 
-      cy.get('#tool-display')
-        .find('li')
-        .each((item) => {
-          expect(item).to.contain('Open')
-        })
+      assertAllFingerState(State.Open)
     })
   })
 
@@ -93,10 +68,6 @@ describe('RoboApp test suite', () => {
       cy.get('select').select('Cobot')
       toolDisplayTitleShouldBe('Robot hand display')
     })
-
-    function toolDisplayTitleShouldBe(title: string) {
-      cy.get('#tool-display > h2').should('have.text', title)
-    }
   })
 
   context('Gripper', () => {
@@ -106,15 +77,55 @@ describe('RoboApp test suite', () => {
 
     it('When closing/opening gripper, should update display', () => {
       executeProgram('close gripper')
-      cy.get('p > span').should('have.text', 'Closed')
+      assertGripperState(State.Closed)
 
       executeProgram('open gripper')
-      cy.get('p > span').should('have.text', 'Open')
+      assertGripperState(State.Open)
     })
   })
 })
 
+enum Axis {
+  X = 2,
+  Y,
+  Z,
+}
+
+enum State {
+  Open = 'Open',
+  Closed = 'Closed',
+}
+
+function assertGripperState(state: State) {
+  cy.get('p > span').should('have.text', state)
+}
+
+function toolDisplayTitleShouldBe(title: string) {
+  cy.get('#tool-display > h2').should('have.text', title)
+}
+
 function executeProgram(command: string) {
   cy.get('textarea').clear().type(command)
   cy.get('.btn-primary').click()
+}
+
+function assertJointPosition(jointIndex: number, axis: Axis, value: number) {
+  cy.get(`tbody > :nth-child(${jointIndex}) > :nth-child(${axis})`).should(
+    'have.text',
+    value
+  )
+}
+
+function assertFingerState(fingerIndex: number, state: State) {
+  cy.get(`#tool-display > ul > :nth-child(${fingerIndex}) > span`).should(
+    'have.text',
+    ` ${state} `
+  )
+}
+function assertAllFingerState(state: State) {
+  cy.get('#tool-display')
+    .find('li')
+    .each((item) => {
+      expect(item).to.contain(state)
+    })
 }
