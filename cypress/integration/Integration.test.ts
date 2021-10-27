@@ -79,12 +79,16 @@ describe('RoboApp test suite', () => {
 
   context('Robot change', () => {
     it('When different robot selected, should display corresponding tool', () => {
-      cy.get('#tool-display > h2').should('have.text', 'Robot hand display')
+      toolDisplayTitleShouldBe('Robot hand display')
       cy.get('select').select('Industrial')
-      cy.get('#tool-display > h2').should('have.text', 'Gripper display')
+      toolDisplayTitleShouldBe('Gripper display')
       cy.get('select').select('Cobot')
-      cy.get('#tool-display > h2').should('have.text', 'Robot hand display')
+      toolDisplayTitleShouldBe('Robot hand display')
     })
+
+    function toolDisplayTitleShouldBe(title: string) {
+      cy.get('#tool-display > h2').should('have.text', title)
+    }
   })
 
   context('Gripper', () => {
