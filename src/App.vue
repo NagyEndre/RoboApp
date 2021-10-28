@@ -71,4 +71,12 @@ span {
 li {
   list-style: none;
 }
+.v-enter-active,
+.v-leave-active {
+  transition: transform 0.1s;
+}
+.v-enter,
+.v-leave-to {
+  transform: scale(1.1);
+}
 </style>

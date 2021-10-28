@@ -1,7 +1,10 @@
 <template>
   <base-card title="Gripper display">
     <p>
-      State: <span>{{ gripperState }}</span>
+      State:
+      <transition mode="out-in">
+        <span :key="gripperState">{{ gripperState }}</span>
+      </transition>
     </p>
   </base-card>
 </template>
@@ -16,3 +19,6 @@ export default class GripperDisplay extends Vue {
   }
 }
 </script>
+<style scoped>
+
+</style>

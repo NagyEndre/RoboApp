@@ -28,12 +28,4 @@ export default class RobotHandDisplay extends Vue {
 li {
   margin: 0.25rem 0;
 }
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.1s;
-}
-.v-enter,
-.v-leave-to {
-  opacity: 0;
-}
 </style>
