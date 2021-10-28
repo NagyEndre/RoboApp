@@ -3,9 +3,11 @@
     <ul>
       <li v-for="(finger, index) in fingers" :key="index">
         Finger {{ index + 1 }}
-        <span>
-          {{ finger.isOpen ? 'Open' : 'Closed' }}
-        </span>
+        <transition mode="out-in">
+          <span :key="finger.isOpen">
+            {{ finger.isOpen ? 'Open' : 'Closed' }}
+          </span>
+        </transition>
       </li>
     </ul>
   </base-card>
@@ -25,5 +27,13 @@ export default class RobotHandDisplay extends Vue {
 <style scoped>
 li {
   margin: 0.25rem 0;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.1s;
+}
+.v-enter,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
