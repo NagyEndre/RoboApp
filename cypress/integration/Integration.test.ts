@@ -63,16 +63,17 @@ describe('RoboApp test suite', () => {
   context('Robot change', () => {
     it('When different robot selected, should display corresponding tool', () => {
       toolDisplayTitleShouldBe('Robot hand display')
-      cy.get('select').select('Industrial')
+      selectRobot('Industrial')
       toolDisplayTitleShouldBe('Gripper display')
-      cy.get('select').select('Cobot')
+
+      selectRobot('Cobot')
       toolDisplayTitleShouldBe('Robot hand display')
     })
   })
 
   context('Gripper', () => {
     beforeEach('Navigate to robot with gripper', () => {
-      cy.get('select').select('Industrial')
+      selectRobot('Industrial')
     })
 
     it('When closing/opening gripper, should update display', () => {
@@ -94,6 +95,10 @@ enum Axis {
 enum State {
   Open = 'Open',
   Closed = 'Closed',
+}
+
+function selectRobot(name: string) {
+  cy.get('select').select(name)
 }
 
 function assertGripperState(state: State) {
@@ -122,6 +127,7 @@ function assertFingerState(fingerIndex: number, state: State) {
     ` ${state} `
   )
 }
+
 function assertAllFingerState(state: State) {
   cy.get('#tool-display')
     .find('li')
