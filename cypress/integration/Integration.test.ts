@@ -129,9 +129,7 @@ function assertFingerState(fingerIndex: number, state: State) {
 }
 
 function assertAllFingerState(state: State) {
-  cy.get('#tool-display')
-    .find('li')
-    .each((item) => {
-      expect(item).to.contain(state)
-    })
+  for (let i = 1; i <= 5; i++) {
+    cy.get(`:nth-child(${i}) > span`).should('contain', state)
+  }
 }
