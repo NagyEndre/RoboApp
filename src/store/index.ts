@@ -1,13 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import RobotBuilder from '@/logic/builders/RobotBuilder'
+import Robot from '@/model/Robot'
 import { ToolBuilder } from '@/logic/builders/ToolBuilder'
 
 Vue.use(Vuex)
 
+const robotInitState: Robot<any> = {
+  joints: [],
+  tool: {},
+}
+
 export default new Vuex.Store({
   state: {
-    robot: {},
+    robot: robotInitState,
   },
   getters: {
     joints(state) {
