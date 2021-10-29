@@ -1,8 +1,12 @@
 <template>
   <section class="container">
     <programming-form id="program-editor"></programming-form>
-    <joint-display id="joint-display"></joint-display>
-    <component :is="toolView" id="tool-display"></component>
+    <transition name="fade" mode="out-in">
+      <joint-display id="joint-display" :key="jointsKey"></joint-display>
+    </transition>
+    <transition name="fade" mode="out-in">
+      <component :is="toolView" id="tool-display"></component>
+    </transition>
   </section>
 </template>
 
@@ -29,6 +33,9 @@ export default class ProgramView extends Vue {
   get toolView() {
     return this.isRobothand ? 'robot-hand-display' : 'gripper-display'
   }
+  get jointsKey() {
+    return this.$store.getters.joints.toString()
+  }
 }
 </script>
 
@@ -47,5 +54,13 @@ export default class ProgramView extends Vue {
 }
 #tool-display {
   grid-column-start: 4;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
